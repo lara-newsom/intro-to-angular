@@ -1,0 +1,12 @@
+<div class="side-nav" *ngIf="selectedProduct$ | async as selectedProduct">
+  <button
+    *ngFor="let product of products$ | async"
+    class="image-button"
+    (click)="selectProduct(product.id)"
+  >
+    <img
+      [src]="product.thumb"
+      alt="image of person sticking a fork in a productce of product"
+    />
+  </button>
+</div>

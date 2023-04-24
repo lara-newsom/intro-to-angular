@@ -1,0 +1,20 @@
+.sub-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+h4, p {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.product {
+  margin: 10px;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}

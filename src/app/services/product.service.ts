@@ -1,0 +1,48 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, map, of, switchMap, tap } from 'rxjs';
+import { Product } from '../models/product';
+import { PRODUCTS } from '../models/product-data.mock';
+import { Category } from '../models/category';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService {
+  private readonly selectedCategory = new BehaviorSubject<Category>(Category.ALL);
+  private readonly selectedProduct = new BehaviorSubject<string | undefined>(PRODUCTS[0].id);
+
+  readonly products$ = of(PRODUCTS);
+  readonly selectedCategory$ = this.selectedCategory.asObservable();
+
+  readonly filteredProducts$ = this.selectedCategory.pipe(
+    switchMap((category) => this.products$.pipe(
+      map((products) => {
+        if(category === Category.ALL) {
+          return products;
+        }
+
+        return products.filter((product: Product) => product.category === category);
+      }),
+      tap((products) => this.setSelectedProduct(products[0].id))
+    ))
+  )
+
+  readonly selectedProduct$ = this.selectedProduct.pipe(switchMap((id) =>
+    this.products$.pipe(
+      map((products) => {
+        if(id){
+          return products.find((product) => product.id === id);
+        }
+
+        return undefined;
+      })
+    )));
+
+  setSelectedProduct(id: string) {
+    this.selectedProduct.next(id);
+  }
+
+  setSelectedCategory(category: Category) {
+    this.selectedCategory.next(category);
+  }
+}

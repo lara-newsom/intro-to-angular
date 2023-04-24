@@ -1,0 +1,51 @@
+  <header class="site-header">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h1>
+          <button><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
+        </h1>
+        <span class="menu-spacer"></span>
+        <button mat-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <div fxShow="true" fxHide.lt-md>
+          <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+          <nav>
+            <ul>
+              <li>
+                <button class="menu-item" mat-button [matMenuTriggerFor]="menu">Shop <span>&#8964;</span></button>
+                <mat-menu class="menu-dropdown" #menu="matMenu">
+                  <button mat-menu-item (click)="changeCategory(Category.HATS)">Animals in Hats</button>
+                  <button mat-menu-item (click)="changeCategory(Category.GLASSES)">Animals in Glasses</button>
+                  <button mat-menu-item (click)="changeCategory(Category.CLOTHES)">Animals in Clothes</button>
+                  <button mat-menu-item (click)="changeCategory(Category.OTHER)">Animals Accessorizing</button>
+                  <button mat-menu-item (click)="changeCategory(Category.ALL)">Animals Wearing All the Things</button>
+                </mat-menu>
+              </li>
+              <li><button class="menu-item" mat-button>Contact</button></li>
+              <li><button class="menu-item" mat-button>About</button></li>
+              <li><button mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart"></mat-icon></button></li>
+            </ul>
+          </nav>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill>
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
+          <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
+          <button mat-menu-item (click)="sidenav.toggle()">About</button>
+          <button mat-menu-item (click)="changeCategory(Category.HATS); sidenav.toggle();">Animals in Hats</button>
+          <button mat-menu-item (click)="changeCategory(Category.GLASSES); sidenav.toggle();">Animals in Glasses</button>
+          <button mat-menu-item (click)="changeCategory(Category.CLOTHES); sidenav.toggle();">Animals in Clothes</button>
+          <button mat-menu-item (click)="changeCategory(Category.OTHER); sidenav.toggle();">Animals Accessorizing</button>
+          <button mat-menu-item (click)="changeCategory(Category.ALL); sidenav.toggle();">Animals Wearing All the Things</button>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+        <app-contact></app-contact>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </header>
