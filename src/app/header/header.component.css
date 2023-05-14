@@ -28,6 +28,7 @@ h1 button img {
 h1 button {
   border: none;
   background-color: rgba(71, 33, 22, 1);
+  cursor: pointer;
 }
 
 .site-header .mat-toolbar-row div {
@@ -52,6 +53,7 @@ h1 button {
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .site-header .header-icons ul {
