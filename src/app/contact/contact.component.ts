@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Breadcrumb } from '../models/breadcrumb';
 import { ContactForm } from '../models/contact-form';
+import { ContactService } from '../services/contact.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-contact',
@@ -24,13 +26,17 @@ export class ContactComponent {
     },
   ];
 
+  readonly contactService = inject(ContactService);
+
   submitForm(model: ContactForm) {
-    console.log('ContactFrom Submitted with Values:', model);
     this.submitted = true;
     this.loading = true;
-    setTimeout(() => {
+
+    this.contactService.submitContactForm(model).pipe(
+      takeUntilDestroyed()
+    ).subscribe(() => {
       this.loading = false;
-    }, 3000)
+    })
   }
 
   clearForm() {

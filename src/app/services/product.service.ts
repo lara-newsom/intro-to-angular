@@ -32,16 +32,17 @@ export class ProductService {
     ))
   );
 
-  readonly selectedProduct$ = this.selectedProduct.pipe(switchMap((id) =>
-    this.products$.pipe(
-      map((products) => {
-        if(id){
-          return products.find((product) => product.id === id);
-        }
+  readonly selectedProduct$ = this.selectedProduct.pipe(
+    switchMap((id) =>
+      this.products$.pipe(
+        map((products) => {
+          if(id){
+            return products.find((product) => product.id === id);
+          }
 
-        return undefined;
-      })
-    )));
+          return undefined;
+        })
+      )));
 
   setSelectedProduct(id: string) {
     this.selectedProduct.next(id);
