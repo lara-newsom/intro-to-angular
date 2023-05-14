@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-view',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent {
+  @Input() set categoryId(val: string) {
+    this.productsService.setSelectedCategory(val.toLowerCase());
+  }
+
+  private readonly productsService = inject(ProductService);
 }

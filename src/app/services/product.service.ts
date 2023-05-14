@@ -8,8 +8,8 @@ import { Category } from '../models/category';
   providedIn: 'root'
 })
 export class ProductService {
-  private readonly selectedCategory = new BehaviorSubject<Category>(Category.ALL);
-  private readonly selectedProduct = new BehaviorSubject<string | undefined>(PRODUCTS[0].id);
+  private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
+  private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
 
   readonly products$ = of(PRODUCTS);
   readonly selectedCategory$ = this.selectedCategory.asObservable();
@@ -23,13 +23,13 @@ export class ProductService {
 
         return products.filter((product: Product) => product.category === category);
       }),
-      tap((products) => this.setSelectedProduct(products[0].id))
     ))
   )
 
   readonly selectedProduct$ = this.selectedProduct.pipe(switchMap((id) =>
     this.products$.pipe(
       map((products) => {
+        console.log('id', id)
         if(id){
           return products.find((product) => product.id === id);
         }
@@ -42,7 +42,7 @@ export class ProductService {
     this.selectedProduct.next(id);
   }
 
-  setSelectedCategory(category: Category) {
+  setSelectedCategory(category: string) {
     this.selectedCategory.next(category);
   }
 }

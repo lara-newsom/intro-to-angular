@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Category } from '../models/category';
-import { ProductService } from '../services/product.service';
+import { LINKS, CategoryLink } from '../models/category';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +7,5 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  readonly Category = Category;
-  constructor(
-    private readonly productService: ProductService
-  ){}
-
-  changeCategory(category: Category){
-    this.productService.setSelectedCategory(category);
-  }
-
+  readonly LINKS: CategoryLink[] = LINKS;
 }

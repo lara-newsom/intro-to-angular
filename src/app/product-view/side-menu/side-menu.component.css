@@ -25,14 +25,12 @@
 }
 
 .image-button img:hover {
-  width: 95%;
-  height: 95%;
   filter: drop-shadow(0 0 0.5rem rgb(33, 18, 16));
 }
 
-.image-button:focus img {
-  width: 95%;
-  height: 95%;
+.router-link-active img {
+  width: 94%;
+  height: 94%;
   border: solid 3px white;
   filter: drop-shadow(0 0 0.5rem rgb(33, 18, 16));
 }

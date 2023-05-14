@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -7,6 +7,10 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./detail-view.component.css']
 })
 export class DetailViewComponent {
-  selectedProduct$ = this.productService.selectedProduct$;
-  constructor(private readonly productService: ProductService,){}
+  @Input() set productId(val: string) {
+      this.productService.setSelectedProduct(val);
+    }
+
+  private readonly productService = inject(ProductService);
+  readonly selectedProduct$ = this.productService.selectedProduct$;
 }

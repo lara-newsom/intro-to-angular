@@ -14,15 +14,15 @@
             <li>
               <button class="menu-item" mat-button [matMenuTriggerFor]="menu">Shop <span>&#8964;</span></button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
-                <button mat-menu-item (click)="changeCategory(Category.HATS)">Animals in Hats</button>
-                <button mat-menu-item (click)="changeCategory(Category.GLASSES)">Animals in Glasses</button>
-                <button mat-menu-item (click)="changeCategory(Category.CLOTHES)">Animals in Clothes</button>
-                <button mat-menu-item (click)="changeCategory(Category.OTHER)">Animals Accessorizing</button>
-                <button mat-menu-item (click)="changeCategory(Category.ALL)">Animals Wearing All the Things</button>
+                <button
+                  *ngFor="let link of LINKS"
+                  mat-menu-item
+                  [routerLink]="['/products', link.category]"
+                  routerLinkActive="router-link-active"
+                >{{ link.description }}</button>
               </mat-menu>
             </li>
             <li><button class="menu-item" mat-button>Contact</button></li>
-            <li><button class="menu-item" mat-button>About</button></li>
             <li><button mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart"></mat-icon></button></li>
           </ul>
         </nav>
@@ -36,15 +36,15 @@
     <mat-nav-list>
       <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
       <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
-      <button mat-menu-item (click)="sidenav.toggle()">About</button>
-      <button mat-menu-item (click)="changeCategory(Category.HATS); sidenav.toggle();">Animals in Hats</button>
-      <button mat-menu-item (click)="changeCategory(Category.GLASSES); sidenav.toggle();">Animals in Glasses</button>
-      <button mat-menu-item (click)="changeCategory(Category.CLOTHES); sidenav.toggle();">Animals in Clothes</button>
-      <button mat-menu-item (click)="changeCategory(Category.OTHER); sidenav.toggle();">Animals Accessorizing</button>
-      <button mat-menu-item (click)="changeCategory(Category.ALL); sidenav.toggle();">Animals Wearing All the Things</button>
+      <button
+        *ngFor="let link of LINKS"
+        mat-menu-item
+        [routerLink]="['/products', link.category]"
+        routerLinkActive="router-link-active"
+      >{{ link.description }}</button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content fxFlexFill>
-    <app-home></app-home>
+    <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
