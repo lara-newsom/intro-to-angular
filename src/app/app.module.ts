@@ -17,23 +17,24 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { SubHeroLogoModule } from './shared-ui/sub-hero-logo/sub-hero-logo.module';
+import { ROUTE_TOKENS } from './models/route-tokens';
 
 const ROUTES: Route[] = [
   {
-    path: 'products',
+    path: ROUTE_TOKENS.shop,
     loadChildren: () => import('./product-view/product-view.module').then(m => m.ProductViewModule),
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: ROUTE_TOKENS.home,
     pathMatch: 'full',
   },
   {
-    path: 'home',
+    path: ROUTE_TOKENS.home,
     component: HomeComponent,
   },
   {
-    path: 'contact',
+    path: ROUTE_TOKENS.contact,
     loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
   },
   {

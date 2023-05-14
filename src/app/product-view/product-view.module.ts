@@ -7,6 +7,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { Route, RouterModule } from '@angular/router';
 import { BreadcrumbsModule } from '../shared-ui/breadcrumbs/breadcrumbs.module';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { ROUTE_TOKENS } from '../models/route-tokens';
 
 const ROUTES: Route[] = [
   {
@@ -14,8 +15,11 @@ const ROUTES: Route[] = [
     component: ProductViewComponent,
     children: [
       {
-        path: 'detail/:productId',
-        component: DetailViewComponent,
+        path: ROUTE_TOKENS.productDetail,
+        children: [{
+          path: ':productId',
+          component: DetailViewComponent,
+        }]
       }
     ]
   }

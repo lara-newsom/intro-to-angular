@@ -8,7 +8,6 @@ import { ProductService } from '../../services/product.service';
 })
 export class SideMenuComponent {
   products$ = this.productService.filteredProducts$;
-  selectedProduct$ = this.productService.selectedProduct$;
 
   constructor(
     private readonly productService: ProductService,

@@ -4,10 +4,16 @@
   <button mat-button>Shop</button>
   <ng-container *ngIf="selectedCategory$ | async as selectedCategory">
     <span>>></span>
-    <button mat-button>{{ selectedCategory }}</button>
-  </ng-container>
-  <ng-container *ngIf="selectedProduct$ | async as selectedProduct">
-    <span>>></span>
-    <button mat-button>{{ selectedProduct.title }}</button>
+    <button
+      [routerLink]="['/products', selectedCategory]"
+      mat-button
+    >{{ selectedCategory }}</button>
+    <ng-container *ngIf="selectedProduct$ | async as selectedProduct">
+      <span>>></span>
+      <button
+        [routerLink]="['/products', selectedCategory, 'detail', selectedProduct.id]"
+        mat-button
+      >{{ selectedProduct.title }}</button>
+    </ng-container>
   </ng-container>
 </div>

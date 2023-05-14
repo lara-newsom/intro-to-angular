@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BreadcrumbsComponent } from './breadcrumbs.component';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   declarations: [BreadcrumbsComponent],
@@ -10,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
     AsyncPipe,
     NgFor,
     NgIf,
+    RouterLink,
     MatButtonModule,
   ]
 })

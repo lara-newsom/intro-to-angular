@@ -24,12 +24,11 @@ export class ProductService {
         return products.filter((product: Product) => product.category === category);
       }),
     ))
-  )
+  );
 
   readonly selectedProduct$ = this.selectedProduct.pipe(switchMap((id) =>
     this.products$.pipe(
       map((products) => {
-        console.log('id', id)
         if(id){
           return products.find((product) => product.id === id);
         }
