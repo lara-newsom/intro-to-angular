@@ -12,17 +12,27 @@
         <nav>
           <ul>
             <li>
-              <button class="menu-item" mat-button [matMenuTriggerFor]="menu">Shop <span>&#8964;</span></button>
+              <button
+                class="menu-item"
+                mat-button
+                [matMenuTriggerFor]="menu"
+              >Shop <span>&#8964;</span></button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
                 <button
                   *ngFor="let link of LINKS"
                   mat-menu-item
-                  [routerLink]="['/products', link.category]"
+                  [routerLink]="['/' + ROUTE_TOKENS.shop, link.category]"
                   routerLinkActive="router-link-active"
                 >{{ link.description }}</button>
               </mat-menu>
             </li>
-            <li><button class="menu-item" mat-button>Contact</button></li>
+            <li>
+              <button
+                [routerLink]="[ '/' + ROUTE_TOKENS.contact]"
+                routerLinkActive="router-link-active"
+                class="menu-item"
+                mat-button
+              >Contact</button></li>
             <li><button mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart"></mat-icon></button></li>
           </ul>
         </nav>
@@ -39,7 +49,7 @@
       <button
         *ngFor="let link of LINKS"
         mat-menu-item
-        [routerLink]="['/products', link.category]"
+        [routerLink]="['/' + ROUTE_TOKENS.shop, link.category]"
         routerLinkActive="router-link-active"
       >{{ link.description }}</button>
     </mat-nav-list>

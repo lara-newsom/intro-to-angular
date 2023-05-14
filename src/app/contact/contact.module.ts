@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ContactComponent } from './contact.component';
 import { BreadcrumbsModule } from '../shared-ui/breadcrumbs/breadcrumbs.module';
 import { Route, RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const ROUTES: Route[] = [
   {
@@ -19,8 +22,11 @@ const ROUTES: Route[] = [
     ContactComponent,
   ],
   imports: [
+    MatProgressSpinnerModule,
     MatButtonModule,
     BreadcrumbsModule,
+    NgIf,
+    FormsModule,
     RouterModule.forChild(ROUTES),
   ]
 })

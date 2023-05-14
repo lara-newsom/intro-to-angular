@@ -1,5 +1,30 @@
 <div class="button-row">
-  <button mat-button>Home</button>
+  <button
+    [routerLink]="['/' + ROUTE_TOKENS.home]"
+    mat-button
+  >Home</button>
+  <span>>></span>
+  <ng-container *ngFor="let breadcrumb of breadcrumbs">
+    <button
+      *ngIf="breadcrumb.routerLink; else noLink"
+      [routerLink]=breadcrumb.routerLink
+      mat-button
+    >{{ breadcrumb.display }}</button>
+    <ng-template #noLink>
+      <button
+      mat-button
+    >{{ breadcrumb.display }}</button>
+    </ng-template>
+    <span>>></span>
+  </ng-container>
+</div>
+
+
+<!-- <div class="button-row">
+  <button
+    [routerLink]="['/' + ROUTE_TOKENS.home]"
+    mat-button
+  >Home</button>
   <span>>></span>
   <button mat-button>Shop</button>
   <ng-container *ngIf="selectedCategory$ | async as selectedCategory">
@@ -16,4 +41,4 @@
       >{{ selectedProduct.title }}</button>
     </ng-container>
   </ng-container>
-</div>
+</div> -->

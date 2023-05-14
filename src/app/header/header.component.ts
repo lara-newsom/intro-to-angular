@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { LINKS, CategoryLink } from '../models/category';
+import { LINKS, CategoryLink, Category } from '../models/category';
+import { ROUTE_TOKENS } from '../models/route-tokens';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,6 @@ import { LINKS, CategoryLink } from '../models/category';
 })
 export class HeaderComponent {
   readonly LINKS: CategoryLink[] = LINKS;
+  readonly ROUTE_TOKENS = ROUTE_TOKENS;
+  readonly Category = Category;
 }

@@ -16,10 +16,7 @@ const ROUTES: Route[] = [
     children: [
       {
         path: ROUTE_TOKENS.productDetail,
-        children: [{
-          path: ':productId',
-          component: DetailViewComponent,
-        }]
+        component: DetailViewComponent,
       }
     ]
   }
