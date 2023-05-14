@@ -1,14 +1,11 @@
-<div class="product">
-  <ng-content select="[image]"></ng-content>
+<button
+  [routerLink]="['/' + ROUTE_TOKENS.products, product.category, ROUTE_TOKENS.productDetail]"
+  [queryParams]="{ productId: product.id }"
+  class="product"
+>
+  <img image [src]="product.image" [alt]="product.description" />
   <div class="add-to-cart">
-    <button mat-button>Add to Cart</button>
+    <h4>{{ product.title }}</h4>
+    <p>{{ product.price }}</p>
   </div>
-  <div class="product-info">
-    <div>
-      <ng-content select="[title]"></ng-content>
-    </div>
-    <div>
-      <ng-content select="[price]"></ng-content>
-    </div>
-  </div>
-</div>
+</button>

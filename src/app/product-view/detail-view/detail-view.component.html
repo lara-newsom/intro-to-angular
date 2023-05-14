@@ -4,10 +4,8 @@
     <img [src]="selectedProduct.image" [alt]="selectedProduct.title" />
     <div class="description">
       <p>{{ selectedProduct.description }}</p>
-      <h4>Ingredients: <span class="ingredient" *ngFor="let ingredient of selectedProduct.tags">{{ ingredient }}</span></h4>
+      <h4>Tags: <span class="tag" *ngFor="let tag of selectedProduct.tags">{{ tag }}</span></h4>
       <p class="price">Price: <span>{{ selectedProduct.price }}</span></p>
     </div>
   </div>
-
-  <button mat-raised-button>Add To Cart</button>
 </div>

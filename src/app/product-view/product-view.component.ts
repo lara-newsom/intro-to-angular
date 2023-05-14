@@ -17,7 +17,7 @@ export class ProductViewComponent implements OnInit{
     this.breadcrumbs.push(
       {
         display: val,
-        routerLink: `/${ROUTE_TOKENS.shop}/${val.toLowerCase()}`,
+        routerLink: `/${ROUTE_TOKENS.products}/${val.toLowerCase()}`,
       }
     )
   }
@@ -26,8 +26,8 @@ export class ProductViewComponent implements OnInit{
   private readonly activatedRoute = inject(ActivatedRoute);
   breadcrumbs: Breadcrumb[] = [
     {
-      display: 'Shop',
-      routerLink: `/${ROUTE_TOKENS.shop}/${Category.ALL}`,
+      display: 'Products',
+      routerLink: `/${ROUTE_TOKENS.products}/${Category.ALL}`,
     },
   ];
 

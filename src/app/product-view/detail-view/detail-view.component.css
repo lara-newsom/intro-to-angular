@@ -56,14 +56,14 @@
   font-size: 1.2rem;
 }
 
-.ingredient {
+.tag {
   font-weight: 200;
 }
 
-.ingredient::after {
+.tag::after {
   content: ', '
 }
-.ingredient:last-of-type::after {
+.tag:last-of-type::after {
   content: ''
 }
 

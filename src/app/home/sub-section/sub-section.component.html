@@ -1,19 +1,9 @@
 <section>
   <div class="sub-section">
-    <app-card>
-      <img image src="../../../assets/images/cropped/cat-glasses-3.jpg" alt="cat in glasses" />
-      <h4 title>Cat Glasses</h4>
-      <p price>$18.95</p>
-    </app-card>
-    <app-card>
-      <img image src="../../../assets/images/cropped/banana-puppy.jpg" alt="Banana puppy jammies" />
-      <h4 title>Banana Puppy Jammies</h4>
-      <p class="price" price>$22.95</p>
-    </app-card>
-    <app-card>
-      <img image src="../../../assets/images/cropped/lamb-jams.jpg" alt="Lamb in pajamas" />
-      <h4 title>Lamby Jammies</h4>
-      <p price>$18.95</p>
+    <app-card
+      *ngFor="let product of featured$ | async"
+      [product]="product"
+    >
     </app-card>
   </div>
 </section>

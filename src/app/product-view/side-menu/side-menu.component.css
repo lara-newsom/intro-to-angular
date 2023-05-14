@@ -9,6 +9,7 @@
 }
 
 .image-button {
+  cursor: pointer;
   flex-grow: 1;
   margin: 10px;
   border: none;

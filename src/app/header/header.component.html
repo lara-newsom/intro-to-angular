@@ -1,6 +1,8 @@
 <header class="site-header">
   <h1>
-    <button><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
+    <button
+      [routerLink]="['/' + ROUTE_TOKENS.home]"
+    ><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
   </h1>
   <mat-toolbar>
     <mat-toolbar-row>
@@ -16,12 +18,12 @@
                 class="menu-item"
                 mat-button
                 [matMenuTriggerFor]="menu"
-              >Shop <span>&#8964;</span></button>
+              >Products <span>&#8964;</span></button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
                 <button
                   *ngFor="let link of LINKS"
                   mat-menu-item
-                  [routerLink]="['/' + ROUTE_TOKENS.shop, link.category]"
+                  [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
                   routerLinkActive="router-link-active"
                 >{{ link.description }}</button>
               </mat-menu>
@@ -33,7 +35,6 @@
                 class="menu-item"
                 mat-button
               >Contact</button></li>
-            <li><button mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart"></mat-icon></button></li>
           </ul>
         </nav>
       </div>
@@ -49,7 +50,7 @@
       <button
         *ngFor="let link of LINKS"
         mat-menu-item
-        [routerLink]="['/' + ROUTE_TOKENS.shop, link.category]"
+        [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
         routerLinkActive="router-link-active"
       >{{ link.description }}</button>
     </mat-nav-list>

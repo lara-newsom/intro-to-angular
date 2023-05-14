@@ -21,7 +21,7 @@ import { ROUTE_TOKENS } from './models/route-tokens';
 
 const ROUTES: Route[] = [
   {
-    path: ROUTE_TOKENS.shop,
+    path: ROUTE_TOKENS.products,
     loadChildren: () => import('./product-view/product-view.module').then(m => m.ProductViewModule),
   },
   {

@@ -13,6 +13,12 @@ export class ProductService {
 
   readonly products$ = of(PRODUCTS);
   readonly selectedCategory$ = this.selectedCategory.asObservable();
+  readonly homeProducts$ = this.products$.pipe(
+    map((products) => {
+      const middle = Math.floor(products.length / 2);
+      return [products[0], products[middle], products[products.length -1]];
+    })
+  );
 
   readonly filteredProducts$ = this.selectedCategory.pipe(
     switchMap((category) => this.products$.pipe(
