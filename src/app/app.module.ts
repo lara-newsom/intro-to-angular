@@ -16,8 +16,8 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { SubHeroLogoModule } from './shared-ui/sub-hero-logo/sub-hero-logo.module';
 import { ROUTE_TOKENS } from './models/route-tokens';
+import { SubHeroLogoModule } from './shared-ui/sub-hero-logo/sub-hero-logo.module';
 
 const ROUTES: Route[] = [
   {
