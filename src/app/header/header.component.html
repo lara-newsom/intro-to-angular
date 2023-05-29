@@ -2,14 +2,21 @@
   <h1>
     <button
       [routerLink]="['/' + ROUTE_TOKENS.home]"
+      aria-label="home"
     ><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
   </h1>
   <mat-toolbar>
     <mat-toolbar-row>
-      <button mat-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <button
+        class="responsive-menu"
+        mat-button
+        (click)="sidenav.toggle()"
+      >
         <mat-icon>menu</mat-icon>
       </button>
-      <div fxShow="true" fxHide.lt-md>
+      <div
+        class="responsive-menu"
+      >
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
         <nav>
           <ul>
@@ -42,7 +49,7 @@
   </mat-toolbar>
 </header>
 
-<mat-sidenav-container fxFlexFill>
+<mat-sidenav-container>
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
@@ -55,7 +62,7 @@
       >{{ link.description }}</button>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content fxFlexFill>
+  <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

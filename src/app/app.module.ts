@@ -13,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ROUTE_TOKENS } from './models/route-tokens';
@@ -62,7 +61,6 @@ const ROUTES: Route[] = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    FlexLayoutModule,
     RouterModule.forRoot(ROUTES, {
       enableTracing: false,
       bindToComponentInputs: true,

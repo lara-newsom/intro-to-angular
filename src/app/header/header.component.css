@@ -31,15 +31,6 @@ h1 button {
   cursor: pointer;
 }
 
-.site-header .mat-toolbar-row div {
-  width: 100%;
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .site-header nav ul {
   display: flex;
   list-style-type: none;
@@ -86,4 +77,26 @@ h1 button {
 
 .mat-toolbar .router-link-active {
   background-color: rgba(71, 33, 22, 1);
+}
+
+button.responsive-menu {
+  display: block;
+}
+
+.site-header .mat-toolbar-row div.responsive-menu {
+  display: none;
+}
+
+@media only screen and (min-width: 695px) {
+  button.responsive-menu {
+    display: none;
+  }
+  .site-header .mat-toolbar-row div.responsive-menu {
+    width: 100%;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
