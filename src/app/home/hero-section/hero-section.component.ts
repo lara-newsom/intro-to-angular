@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './hero-section.component.html',
 })
 export class HeroSectionComponent {
-  image = '../../assets/images/heros/hero-1.jpg';
+  imageUrl = '../../assets/images/heros/hero-1.jpg';
 }
