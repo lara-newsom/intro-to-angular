@@ -8,7 +8,7 @@ import { ROUTE_TOKENS } from '../../../models/route-tokens';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  @Input({required: true}) product!: Product;
+  @Input() product!: Product;
   readonly ROUTE_TOKENS = ROUTE_TOKENS;
 
 }

@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { tap } from 'rxjs';
-import { ROUTE_TOKENS } from 'src/app/models/route-tokens';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
