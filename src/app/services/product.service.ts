@@ -12,6 +12,7 @@ export class ProductService {
   private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
   private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
   private readonly products = new BehaviorSubject<Product[]>([]);
+  
   readonly products$ = this.products.asObservable();
   readonly selectedCategory$ = this.selectedCategory.asObservable();
   readonly homeProducts$ = this.products$.pipe(
