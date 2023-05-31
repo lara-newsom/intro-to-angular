@@ -17,6 +17,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ROUTE_TOKENS } from './models/route-tokens';
 import { SubHeroLogoModule } from './shared-ui/sub-hero-logo/sub-hero-logo.module';
+import { HttpClientModule } from '@angular/common/http';
 
 const ROUTES: Route[] = [
   {
@@ -52,6 +53,7 @@ const ROUTES: Route[] = [
     HeaderComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,

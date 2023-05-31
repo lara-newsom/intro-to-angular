@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, map, switchMap } from 'rxjs';
 import { Product } from '../models/product';
-import { PRODUCTS } from '../models/product-data.mock';
 import { Category } from '../models/category';
+import { HttpClient } from '@angular/common/http';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ import { Category } from '../models/category';
 export class ProductService {
   private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
   private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
-
-  readonly products$ = of(PRODUCTS);
+  private readonly products = new BehaviorSubject<Product[]>([]);
+  readonly products$ = this.products.asObservable();
   readonly selectedCategory$ = this.selectedCategory.asObservable();
   readonly homeProducts$ = this.products$.pipe(
     map((products) => {
@@ -43,6 +44,16 @@ export class ProductService {
           return undefined;
         })
       )));
+
+  constructor(
+    private readonly http: HttpClient
+  ) {
+    this.http.get<{products: Product[]}>('http://localhost:3000/products')
+      .pipe(takeUntilDestroyed())
+      .subscribe((response) => {
+        this.products.next(response.products);
+      });
+  }
 
   setSelectedProduct(id: string) {
     this.selectedProduct.next(id);

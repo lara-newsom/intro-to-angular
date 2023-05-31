@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ContactForm } from '../models/contact-form';
-import { first, mergeMap, tap, timer } from 'rxjs';
+import { first, tap, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
