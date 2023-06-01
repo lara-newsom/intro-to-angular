@@ -7,8 +7,6 @@ import { first, tap, timer } from 'rxjs';
 })
 export class ContactService {
 
-  constructor() { }
-
   submitContactForm(model: ContactForm){
     // delayed response to mock network traffic
     return timer(3000).pipe(

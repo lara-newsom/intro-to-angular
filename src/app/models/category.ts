@@ -12,6 +12,8 @@ export interface CategoryLink {
   description: string;
 }
 
+// Since we have a top nav and a responsive side nav we wan to make sure the options are the same
+// This array is meant to populate the main navigation menus
 export const LINKS: CategoryLink[] = [
   {
     category: Category.HATS,

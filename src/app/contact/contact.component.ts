@@ -1,15 +1,19 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { Breadcrumb } from '../models/breadcrumb';
 import { ContactForm } from '../models/contact-form';
 import { ContactService } from '../services/contact.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntil } from 'rxjs/operators';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent {
+export class ContactComponent implements OnDestroy{
+  readonly contactService = inject(ContactService);
+  destroyed$ = new ReplaySubject<void>(1);
+
   model: ContactForm = {
     fullName: '',
     email: '',
@@ -26,14 +30,14 @@ export class ContactComponent {
     },
   ];
 
-  readonly contactService = inject(ContactService);
-
   submitForm(model: ContactForm) {
     this.submitted = true;
     this.loading = true;
 
     this.contactService.submitContactForm(model).pipe(
-      takeUntilDestroyed()
+      // Since we are directly subscribing to the observable we have to unsubscribe when the component destroys
+      // This is to avoid memory leaks
+      takeUntil(this.destroyed$)
     ).subscribe(() => {
       this.loading = false;
     })
@@ -47,5 +51,12 @@ export class ContactComponent {
       phone: '',
       comment: '',
     }
+  }
+
+  // This sends a value through the ReplaySubject which causes the takeUntil operator
+  // to complete the observable which destroys the subscription
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 }

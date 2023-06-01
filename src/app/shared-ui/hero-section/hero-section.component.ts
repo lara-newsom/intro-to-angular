@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   templateUrl: './hero-section.component.html',
 })
 export class HeroSectionComponent {
-  imageUrl = '../../assets/images/heros/hero-1.jpg';
+  @Input() imageUrl = '../../assets/images/heros/hero-1.jpg';
 }

@@ -1,12 +1,17 @@
 <header class="site-header">
+<!-- Clickable Site Logo -->
   <h1>
     <button
       [routerLink]="['/' + ROUTE_TOKENS.home]"
       aria-label="home"
     ><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
   </h1>
+
+<!-- Elements prefixed with 'mat' are Angular Material Elements -->
   <mat-toolbar>
     <mat-toolbar-row>
+
+<!-- Hamburger menu that is displayed on screens smaller than 695px wide -->
       <button
         class="responsive-menu"
         mat-button
@@ -14,10 +19,11 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
+
+<!-- Main menu that is displayed on screens wider than 695px -->
       <div
         class="responsive-menu"
       >
-        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
         <nav>
           <ul>
             <li>
@@ -50,6 +56,7 @@
 </header>
 
 <mat-sidenav-container>
+<!-- responsive side menu that is only displayed on screens 695px wide and smaller -->
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
@@ -62,6 +69,8 @@
       >{{ link.description }}</button>
     </mat-nav-list>
   </mat-sidenav>
+
+<!-- Because of the responsive menu, we are using this container for our main content -->
   <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>

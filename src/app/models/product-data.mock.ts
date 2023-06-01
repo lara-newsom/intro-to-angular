@@ -1,6 +1,7 @@
 import { Category } from './category';
 import { Product } from './product';
 
+// This is the same mock product data that is returned from the mockoon endpoint
 export const PRODUCTS: Product[] = [
   {
     image: '../../assets/images/cropped/banana-puppy.jpg',
