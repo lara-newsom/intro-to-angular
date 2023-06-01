@@ -4,6 +4,7 @@ import { Product } from '../models/product';
 import { Category } from '../models/category';
 import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { PRODUCTS } from '../models/product-data.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,17 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class ProductService {
   private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
   private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
-  private readonly products = new BehaviorSubject<Product[]>([]);
-  
+  private readonly products = new BehaviorSubject<Product[]>(PRODUCTS);
+
   readonly products$ = this.products.asObservable();
   readonly selectedCategory$ = this.selectedCategory.asObservable();
   readonly homeProducts$ = this.products$.pipe(
     map((products) => {
-      const middle = Math.floor(products.length / 2);
-      return [products[0], products[middle], products[products.length -1]];
+      if(products.length){
+        const middle = Math.floor(products.length / 2);
+        return [products[0], products[middle], products[products.length -1]];
+      }
+      return [];
     })
   );
 

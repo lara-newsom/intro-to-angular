@@ -3,9 +3,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { Route, RouterModule } from '@angular/router';
-import { HeroSectionComponent } from './home/hero-section/hero-section.component';
-import { SubSectionComponent } from './home/sub-section/sub-section.component';
-import { CardComponent } from './home/sub-section/card/card.component';
 import { HeaderComponent } from './header/header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,8 +13,9 @@ import { MatListModule } from '@angular/material/list';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ROUTE_TOKENS } from './models/route-tokens';
-import { SubHeroLogoModule } from './shared-ui/sub-hero-logo/sub-hero-logo.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedUiModule } from './shared-ui/shared-ui.module';
 
 const ROUTES: Route[] = [
   {
@@ -39,7 +37,7 @@ const ROUTES: Route[] = [
   },
   {
     path: '**',
-    loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule),
+    component: NotFoundComponent,
   },
 ];
 
@@ -47,9 +45,6 @@ const ROUTES: Route[] = [
   declarations: [
     AppComponent,
     HomeComponent,
-    HeroSectionComponent,
-    SubSectionComponent,
-    CardComponent,
     HeaderComponent,
   ],
   imports: [
@@ -67,7 +62,7 @@ const ROUTES: Route[] = [
       enableTracing: false,
       bindToComponentInputs: true,
     }),
-    SubHeroLogoModule,
+    SharedUiModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

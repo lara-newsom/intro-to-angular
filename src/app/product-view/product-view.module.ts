@@ -5,9 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { DetailViewComponent } from './detail-view/detail-view.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { Route, RouterModule } from '@angular/router';
-import { BreadcrumbsModule } from '../shared-ui/breadcrumbs/breadcrumbs.module';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ROUTE_TOKENS } from '../models/route-tokens';
+import { BreadcrumbsComponent } from '../shared-ui/breadcrumbs/breadcrumbs.component';
 
 const ROUTES: Route[] = [
   {
@@ -34,7 +34,7 @@ const ROUTES: Route[] = [
     NgFor,
     MatButtonModule,
     MatIconModule,
-    BreadcrumbsModule,
+    BreadcrumbsComponent,
     RouterModule.forChild(ROUTES),
   ],
 })

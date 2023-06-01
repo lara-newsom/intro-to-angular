@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
-import { RouterModule } from '@angular/router';
-import { SubHeroLogoModule } from './sub-hero-logo/sub-hero-logo.module';
-import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { SubHeroLogoComponent } from './sub-hero-logo/sub-hero-logo.component';
+import { SubSectionComponent } from './sub-section/sub-section.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    HeroSectionComponent,
+    SubHeroLogoComponent,
+    SubSectionComponent,
+    BreadcrumbsComponent,
   ],
   exports: [
-  ],
-  imports: [
-    RouterModule,
-    MatButtonModule,
-    MatMenuModule,
-    SubHeroLogoModule,
-    BreadcrumbsModule,
+    HeroSectionComponent,
+    SubHeroLogoComponent,
+    SubSectionComponent,
+    BreadcrumbsComponent,
   ]
 })
 export class SharedUiModule {}
