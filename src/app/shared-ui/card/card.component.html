@@ -1,3 +1,4 @@
+<!-- We are using the RouterLink and QueryParams directives to change the browser URL from the template -->
 <button
   [routerLink]="['/' + ROUTE_TOKENS.products, product.category, ROUTE_TOKENS.productDetail]"
   [queryParams]="{ productId: product.id }"

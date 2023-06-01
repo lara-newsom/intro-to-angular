@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './hero-section.component.html',
 })
 export class HeroSectionComponent {
+  // If we forget to pass the imageUrl property, this sets a default value 
   @Input() imageUrl = '../../assets/images/heros/hero-1.jpg';
 }
