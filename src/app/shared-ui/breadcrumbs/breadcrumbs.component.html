@@ -18,27 +18,3 @@
     <span>>></span>
   </ng-container>
 </div>
-
-
-<!-- <div class="button-row">
-  <button
-    [routerLink]="['/' + ROUTE_TOKENS.home]"
-    mat-button
-  >Home</button>
-  <span>>></span>
-  <button mat-button>Shop</button>
-  <ng-container *ngIf="selectedCategory$ | async as selectedCategory">
-    <span>>></span>
-    <button
-      [routerLink]="['/products', selectedCategory]"
-      mat-button
-    >{{ selectedCategory }}</button>
-    <ng-container *ngIf="selectedProduct$ | async as selectedProduct">
-      <span>>></span>
-      <button
-        [routerLink]="['/products', selectedCategory, 'detail', selectedProduct.id]"
-        mat-button
-      >{{ selectedProduct.title }}</button>
-    </ng-container>
-  </ng-container>
-</div> -->
