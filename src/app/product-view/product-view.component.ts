@@ -11,6 +11,8 @@ import { Category } from '../models/category';
   styleUrls: ['./product-view.component.css']
 })
 export class ProductViewComponent implements OnInit{
+  // any time the categoryId input changes, we want to update our breadcrumbs array
+  // we are using a setter to handle new values
   @Input() set categoryId(val: string) {
     this.productsService.setSelectedCategory(val.toLowerCase());
     this.breadcrumbs = this.breadcrumbs.slice(0,1);
@@ -23,6 +25,7 @@ export class ProductViewComponent implements OnInit{
   }
 
   private readonly productsService = inject(ProductService);
+  // The activated route is only available when the component is the destination of the current route
   private readonly activatedRoute = inject(ActivatedRoute);
   breadcrumbs: Breadcrumb[] = [
     {
@@ -32,6 +35,7 @@ export class ProductViewComponent implements OnInit{
   ];
 
   ngOnInit() {
+    // We want to dynamically form the breadcrumbs based off of our route
     this.activatedRoute.queryParamMap.subscribe((paramMap) => {
       this.breadcrumbs = this.breadcrumbs.slice(0, 2);
       if(paramMap.get('productId')){

@@ -2,17 +2,21 @@
   <app-breadcrumbs
     [breadcrumbs]="breadcrumbs"
   ></app-breadcrumbs>
+
   <div class="contact-wrapper">
     <div class="image-wrapper">
       <img src="../../assets/images/contact.jpg" alt="couple of kids in animal costumes" />
     </div>
+<!-- Template Driven Form Example -->
     <div *ngIf="!submitted; else formSubmitted" class="form-wrapper">
       <h3>We'd Love to Hear from You</h3>
       <p>Please fill out the form below to let us know how we can help.</p>
       <fieldset>
+<!-- The for id is contactForm which is set with ngForm -->
         <form #contactForm="ngForm">
           <div class="form-group">
             <label for="full_name">Full name</label>
+<!-- The banana-in-a-box binding allows us to two way binding to the form -->
             <input
               type="text"
               id="fullName"
@@ -22,6 +26,8 @@
               required
               #fullName="ngModel"
             />
+
+<!-- We are using the structural directive *ngIf to determine if this reminder should be shown -->
             <div
               *ngIf="fullName.invalid && fullName.touched"
               class="alert alert-danger"
@@ -70,6 +76,8 @@
             >Comment is required
             </div>
           </div>
+
+<!-- We are checking if the form has any invalid fields before allowing the button to be clicked -->
           <button
             [disabled]="contactForm.invalid"
             mat-raised-button
@@ -85,6 +93,7 @@
   </div>
 </section>
 
+<!-- Once the form has been submitted, we will remove the form from the DOM and render this message -->
 <ng-template #formSubmitted>
   <div
     class="form-wrapper"

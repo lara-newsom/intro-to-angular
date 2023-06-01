@@ -13,6 +13,7 @@ const ROUTES: Route[] = [
   {
     path: ':categoryId',
     component: ProductViewComponent,
+    // we are rendering the child routes in a nested router outlet
     children: [
       {
         path: ROUTE_TOKENS.productDetail,
