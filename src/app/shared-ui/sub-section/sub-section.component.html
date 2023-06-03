@@ -2,5 +2,9 @@
   <div class="sub-section">
 <!-- add the app-card selector here and use ngFor to iterate over the array returned by the featured$ observable -->
 <!-- we will use the async pipe to handle subscribing to the observable -->
+    <app-card
+      *ngFor="let product of featured$ | async"
+      [product]="product"
+    ></app-card>
   </div>
 </section>
