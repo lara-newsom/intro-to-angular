@@ -1,8 +1,0 @@
-.button-row {
-  display: table-cell;
-  width: 100%;
-}
-
-span:last-of-type {
-  display: none;
-}
