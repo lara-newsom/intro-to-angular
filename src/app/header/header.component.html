@@ -15,9 +15,18 @@
                 Products <span>&#8964;</span>
               </button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
-                <button mat-menu-item>{{ menuItemOne }}</button>
-                <button mat-menu-item>Thing 2</button>
-                <button mat-menu-item>Thing 3</button>
+                <button
+                  (click)="clickMenuItem(menuItemOne)"
+                  mat-menu-item
+                >{{ menuItemOne }}</button>
+                <button
+                  (click)="clickMenuItem('Thing 2')"
+                  mat-menu-item
+                >Thing 2</button>
+                <button
+                  (click)="clickMenuItem('Thing 3')"
+                  mat-menu-item
+                >Thing 3</button>
               </mat-menu>
             </li>
             <li>
