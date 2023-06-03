@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   selector: 'app-hero-section',
   templateUrl: './hero-section.component.html',
-  styleUrls: ['./hero-section.component.css']
 })
 export class HeroSectionComponent {
-
+  // Add an input property called imageUrl and set a default value
 }

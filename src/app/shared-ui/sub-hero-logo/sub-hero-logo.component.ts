@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sub-hero-logo.component.css']
 })
 export class SubHeroLogoComponent {
-
+  readonly logoUrl = '../../assets/images/badge.png';
 }

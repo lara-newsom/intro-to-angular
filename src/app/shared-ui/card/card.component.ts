@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-
+  // create an input property called product that is of type Product and make it required
 }
