@@ -15,6 +15,7 @@ import { CardComponent } from '../card/card.component';
   styleUrls: ['./sub-section.component.css']
 })
 export class SubSectionComponent {
+  // the inject function is actually used under the hood when dependencies are declared in the constructor
   private readonly productService = inject(ProductService);
 
   featured$ = this.productService.homeProducts$;
