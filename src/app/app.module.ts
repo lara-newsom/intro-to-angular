@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { SharedUiModule } from './shared-ui/shared-ui.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -32,8 +33,11 @@ import { SharedUiModule } from './shared-ui/shared-ui.module';
     MatSidenavModule,
     MatListModule,
     SharedUiModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
