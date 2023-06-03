@@ -1,30 +1,49 @@
 <header class="site-header">
+<!-- Clickable Site Logo -->
   <h1>
-    <button aria-label="home"><img [src]="logoUrl"/></button>
+    <!-- Add a routerLink to route to the home component -->
+    <button
+      aria-label="home"
+    ><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
   </h1>
+
+<!-- Elements prefixed with 'mat' are Angular Material Elements -->
   <mat-toolbar>
     <mat-toolbar-row>
-      <button class="responsive-menu" mat-button (click)="sidenav.toggle()">
+
+<!-- Hamburger menu that is displayed on screens smaller than 695px wide -->
+      <button
+        class="responsive-menu"
+        mat-button
+        (click)="sidenav.toggle()"
+      >
         <mat-icon>menu</mat-icon>
       </button>
-      <div class="responsive-menu">
+
+<!-- Main menu that is displayed on screens wider than 695px -->
+      <div
+        class="responsive-menu"
+      >
         <nav>
           <ul>
             <li>
-              <button class="menu-item" mat-button [matMenuTriggerFor]="menu">
-                Products <span>&#8964;</span>
-              </button>
+              <button
+                class="menu-item"
+                mat-button
+                [matMenuTriggerFor]="menu"
+              >Products <span>&#8964;</span></button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
                 <button
                   *ngFor="let link of LINKS"
-                  (click)="clickMenuItem(link.category)"
                   mat-menu-item
                 >{{ link.description }}</button>
               </mat-menu>
             </li>
             <li>
-              <button class="menu-item" mat-button>Contact</button>
-            </li>
+              <button
+                class="menu-item"
+                mat-button
+              >Contact</button></li>
           </ul>
         </nav>
       </div>
@@ -33,17 +52,19 @@
 </header>
 
 <mat-sidenav-container>
+<!-- responsive side menu that is only displayed on screens 695px wide and smaller -->
   <mat-sidenav #sidenav>
     <mat-nav-list>
+      <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
+      <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
       <button
         *ngFor="let link of LINKS"
         mat-menu-item
-        (click)="clickMenuItem(link.category); sidenav.toggle()"
       >{{ link.description }}</button>
-      <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
-      <button mat-menu-item (click)="sidenav.toggle()">Close</button>
     </mat-nav-list>
   </mat-sidenav>
+
+<!-- Because of the responsive menu, we are using this container for our main content -->
   <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>
