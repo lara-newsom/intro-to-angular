@@ -8,14 +8,21 @@ import { CardComponent } from './card/card.component';
 
 
 @NgModule({
-  declarations: [
-    HeroSectionComponent,
-    SubSectionComponent,
-    SubHeroLogoComponent,
-    CardComponent,
-  ],
   imports: [
-    CommonModule
+    CommonModule,
+    CardComponent,
+    HeroSectionComponent,
+    SubHeroLogoComponent,
+    SubSectionComponent,
+  ],
+  exports: [
+    CommonModule,
+    CardComponent,
+    HeroSectionComponent,
+    SubHeroLogoComponent,
+    SubSectionComponent,
   ]
 })
 export class SharedUiModule { }
+
+
