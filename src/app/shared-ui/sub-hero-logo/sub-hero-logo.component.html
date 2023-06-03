@@ -5,7 +5,9 @@
     </div>
   </div>
   <!-- create a content projection slot called title inside the h2 tag -->
-  <h2></h2>
+  <h2><ng-content select="[title]"/></h2>
   <!-- create a content projection slot called sub-title inside the h2 tag -->
-  <h3></h3>
+  <h3><ng-content select="[sub-title]"/></h3>
 </div>
+
+

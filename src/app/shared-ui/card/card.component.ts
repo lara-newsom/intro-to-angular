@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from 'src/app/models/product';
 
 @Component({
   standalone: true,
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-  // create an input property called product that is of type Product and make it required
+    // create an input property called product that is of type Product and make it required
+    @Input({ required: true }) product!: Product;
 }

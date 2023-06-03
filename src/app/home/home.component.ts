@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  readonly homeImageUrl = '../../assets/images/heros/hero-5.jpg';
 }
