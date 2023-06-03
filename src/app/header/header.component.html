@@ -16,17 +16,10 @@
               </button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
                 <button
-                  (click)="clickMenuItem(menuItemOne)"
+                  *ngFor="let link of LINKS"
+                  (click)="clickMenuItem(link.category)"
                   mat-menu-item
-                >{{ menuItemOne }}</button>
-                <button
-                  (click)="clickMenuItem('Thing 2')"
-                  mat-menu-item
-                >Thing 2</button>
-                <button
-                  (click)="clickMenuItem('Thing 3')"
-                  mat-menu-item
-                >Thing 3</button>
+                >{{ link.description }}</button>
               </mat-menu>
             </li>
             <li>
@@ -42,9 +35,11 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <mat-nav-list>
-      <button mat-menu-item (click)="sidenav.toggle()">Thing 1</button>
-      <button mat-menu-item (click)="sidenav.toggle()">Thing 2</button>
-      <button mat-menu-item (click)="sidenav.toggle()">Thing 3</button>
+      <button
+        *ngFor="let link of LINKS"
+        mat-menu-item
+        (click)="clickMenuItem(link.category); sidenav.toggle()"
+      >{{ link.description }}</button>
       <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
       <button mat-menu-item (click)="sidenav.toggle()">Close</button>
     </mat-nav-list>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { LINKS } from '../models/category';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() myEvent = new EventEmitter<string>();
+  // readonly because we do not intend to alter this prop.
+  readonly LINKS = LINKS;
 
-  menuItemOne = 'Menu Item One';
-  logoUrl = '../../assets/images/justlikepeople.png';
+  readonly menuItemOne = 'Menu Item One';
+  readonly logoUrl = '../../assets/images/justlikepeople.png';
 
   clickMenuItem(name: string){
     console.log(name, ' was clicked!');
-    this.myEvent.emit(name);
   }
 }
