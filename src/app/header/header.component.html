@@ -1,8 +1,8 @@
 <header class="site-header">
 <!-- Clickable Site Logo -->
   <h1>
+    <!-- Add a routerLink to route to the home component -->
     <button
-      [routerLink]="['/' + ROUTE_TOKENS.home]"
       aria-label="home"
     ><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
   </h1>
@@ -36,15 +36,11 @@
                 <button
                   *ngFor="let link of LINKS"
                   mat-menu-item
-                  [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
-                  routerLinkActive="router-link-active"
                 >{{ link.description }}</button>
               </mat-menu>
             </li>
             <li>
               <button
-                [routerLink]="[ '/' + ROUTE_TOKENS.contact]"
-                routerLinkActive="router-link-active"
                 class="menu-item"
                 mat-button
               >Contact</button></li>
@@ -64,8 +60,6 @@
       <button
         *ngFor="let link of LINKS"
         mat-menu-item
-        [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
-        routerLinkActive="router-link-active"
       >{{ link.description }}</button>
     </mat-nav-list>
   </mat-sidenav>

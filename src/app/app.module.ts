@@ -17,28 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedUiModule } from './shared-ui/shared-ui.module';
 
+// Declare a ROUTES constant and create routes for 'home', '', and '**'
 const ROUTES: Route[] = [
-  {
-    path: ROUTE_TOKENS.products,
-    loadChildren: () => import('./product-view/product-view.module').then(m => m.ProductViewModule),
-  },
-  {
-    path: '',
-    redirectTo: ROUTE_TOKENS.home,
-    pathMatch: 'full',
-  },
-  {
-    path: ROUTE_TOKENS.home,
-    component: HomeComponent,
-  },
-  {
-    path: ROUTE_TOKENS.contact,
-    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-  },
 ];
 
 @NgModule({
@@ -58,10 +38,8 @@ const ROUTES: Route[] = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    RouterModule.forRoot(ROUTES, {
-      enableTracing: false,
-      bindToComponentInputs: true,
-    }),
+    // Pass ROUTES into the forRoot method
+    RouterModule.forRoot([]),
     SharedUiModule,
   ],
   providers: [],
