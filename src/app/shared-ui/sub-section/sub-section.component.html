@@ -1,11 +1,6 @@
 <section>
   <div class="sub-section">
-<!-- We are first subscribing to the featured$ observable with the async pipe -->
-<!-- then we are iterating over the values and rendering one card per value -->
-    <app-card
-      *ngFor="let product of featured$ | async"
-      [product]="product"
-    >
-    </app-card>
+<!-- add the app-card selector here and use ngFor to iterate over the array returned by the featured$ observable -->
+<!-- we will use the async pipe to handle subscribing to the observable -->
   </div>
 </section>

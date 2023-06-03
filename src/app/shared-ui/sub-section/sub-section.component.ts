@@ -1,22 +1,16 @@
-import { AsyncPipe, NgFor } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
-import { CardComponent } from '../card/card.component';
+import { Component } from '@angular/core';
 
 @Component({
   standalone: true,
   imports: [
-    NgFor,
-    AsyncPipe,
-    CardComponent,
+    // add imports for NgFor, AsyncPipe, and CardComponent
   ],
   selector: 'app-sub-section',
   templateUrl: './sub-section.component.html',
   styleUrls: ['./sub-section.component.css']
 })
 export class SubSectionComponent {
-  // the inject function is actually used under the hood when dependencies are declared in the constructor
-  private readonly productService = inject(ProductService);
+  // inject the Product service into the class
 
-  featured$ = this.productService.homeProducts$;
+  // create an observable property called featured$ and set it equal to productService.homeProducts$
 }

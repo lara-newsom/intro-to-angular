@@ -4,8 +4,8 @@
       <img [src]="logoUrl" alt="Just Like People Logo" />
     </div>
   </div>
-  <!-- This component has two projection slots. The select value is how it knows what to render in which slot -->
-  <!-- If there are no select attributes, content is rendered in the order it is received until the slots are filled -->
-  <h2><ng-content select="[title]"></ng-content></h2>
-  <h3><ng-content select="[sub-title]"></ng-content></h3>
+  <!-- create a content projection slot called title inside the h2 tag -->
+  <h2></h2>
+  <!-- create a content projection slot called sub-title inside the h2 tag -->
+  <h3></h3>
 </div>

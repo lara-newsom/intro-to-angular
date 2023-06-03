@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -7,6 +7,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './hero-section.component.html',
 })
 export class HeroSectionComponent {
-  // If we forget to pass the imageUrl property, this sets a default value 
-  @Input() imageUrl = '../../assets/images/heros/hero-1.jpg';
+  // Add an input property called imageUrl and set a default value
 }
