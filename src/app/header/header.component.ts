@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   menuItemOne = 'Menu Item One';
-
+  logoUrl = '../../assets/images/justlikepeople.png';
 }
