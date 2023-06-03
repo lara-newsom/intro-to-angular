@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '../models/product';
 
+// this is the return type of the endpoint
 interface ProductsResponse {
   products: Product[];
 }
@@ -10,10 +11,11 @@ interface ProductsResponse {
   providedIn: 'root'
 })
 export class ProductApiService {
-  private readonly http = inject(HttpClient);
-  private readonly endpointUrl = 'http://localhost:3000/products';
+  // inject the HttpClient using the inject function
 
-  // This sets the public observable property to the observables returned by the httpClient get method
-  // This observable will emit one value when the response is received and then complete
-  getProducts$ = this.http.get<ProductsResponse>(this.endpointUrl);
+  // declare a constant for the URL endpoint
+  // private readonly endpointUrl = 'http://localhost:3000/products';
+
+  // create a public readonly property to hold the Observable returned by httpClient.get
+  // we will use the map operator to unwrap the response in this service
 }

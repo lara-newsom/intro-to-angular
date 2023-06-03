@@ -18,5 +18,6 @@ export class SubSectionComponent {
   // the inject function is actually used under the hood when dependencies are declared in the constructor
   private readonly productService = inject(ProductService);
 
+  // we won't need to make any changes to this service.
   featured$ = this.productService.homeProducts$;
 }
