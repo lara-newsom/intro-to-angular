@@ -49,7 +49,7 @@ export class ProductService {
       this.products$.pipe(
         map((products) => {
           if(id){
-            return products.find((product) => product.id === id);
+            return products.find((product) => product.id.toLowerCase() === id.toLowerCase());
           }
 
           return undefined;

@@ -14,12 +14,12 @@ export class ProductViewComponent implements OnInit{
   // any time the categoryId input changes, we want to update our breadcrumbs array
   // we are using a setter to handle new values
   @Input() set categoryId(val: string) {
-    this.productsService.setSelectedCategory(val.toLowerCase());
+    this.productsService.setSelectedCategory(val);
     this.breadcrumbs = this.breadcrumbs.slice(0,1);
     this.breadcrumbs.push(
       {
         display: val,
-        routerLink: `/${ROUTE_TOKENS.products}/${val.toLowerCase()}`,
+        routerLink: `/${ROUTE_TOKENS.products}/${val}`,
       }
     )
   }
