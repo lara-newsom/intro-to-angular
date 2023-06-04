@@ -29,6 +29,11 @@ const ROUTES: Route[] = [
     component: HomeComponent,
   },
   {
+    path: ROUTE_TOKENS.products,
+    loadChildren: () =>import('./product-view/product-view.module')
+      .then(m => m.ProductViewModule),
+  },
+  {
     path: '**',
     component: NotFoundComponent
   }

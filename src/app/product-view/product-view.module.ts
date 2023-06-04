@@ -12,6 +12,10 @@ const ROUTES: Route[] = [
   // declare a route that matches the categoryId url param that routes to the ProductViewComponent
   // To route content into the nested router outlet, create a children array
   // declare a route in the children array that matches ROUTE_TOKENS.productDetail and routes to DetailViewComponent
+  {
+    path: ':categoryId',
+    component: ProductViewComponent
+  }
 ]
 
 @NgModule({
@@ -30,4 +34,6 @@ const ROUTES: Route[] = [
   ],
 })
 export class ProductViewModule {}
+
+
 
