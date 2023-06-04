@@ -57,7 +57,9 @@ const ROUTES: Route[] = [
     MatSidenavModule,
     MatListModule,
     // Pass ROUTES into the forRoot method
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, {
+      bindToComponentInputs: true
+    }),
     SharedUiModule,
   ],
   providers: [],

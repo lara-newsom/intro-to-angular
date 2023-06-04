@@ -12,7 +12,7 @@ import { ProductApiService } from './product-api.service';
 export class ProductService {
   // create a private readonly property called selectedCategory that is a BehaviorSubject
   // set the initial value to Category.ALL
-  private readonly selectedCategory = new BehaviorSubject<Category>(Category.ALL);
+  private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
 
   // create a private readonly property called selectedProduct that is a BehaviorSubject
   // set the initial value to undefined
@@ -87,7 +87,7 @@ export class ProductService {
 
   // create a public class method called setSelectedCategory
   // when invoked it calls next on the private selectedCategory subject
-  setSelectedCategory(category: Category) {
+  setSelectedCategory(category: string) {
     this.selectedCategory.next(category);
   }
 }

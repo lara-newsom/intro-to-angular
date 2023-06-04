@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DetailViewComponent } from './detail-view/detail-view.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { Route, RouterModule } from '@angular/router';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ROUTE_TOKENS } from '../models/route-tokens';
 
 const ROUTES: Route[] = [
@@ -14,7 +14,13 @@ const ROUTES: Route[] = [
   // declare a route in the children array that matches ROUTE_TOKENS.productDetail and routes to DetailViewComponent
   {
     path: ':categoryId',
-    component: ProductViewComponent
+    component: ProductViewComponent,
+    children: [
+      {
+        path: ROUTE_TOKENS.productDetail,
+        component: DetailViewComponent
+      }
+    ]
   }
 ]
 
@@ -28,6 +34,7 @@ const ROUTES: Route[] = [
     AsyncPipe,
     NgIf,
     NgFor,
+    CurrencyPipe,
     MatButtonModule,
     MatIconModule,
     RouterModule.forChild(ROUTES),

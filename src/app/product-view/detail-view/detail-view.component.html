@@ -1,24 +1,29 @@
 <!-- use the async pipe with ngIf to subscribe to selectedProduct$ and alias the value as selectedProduct-->
 <div
+  *ngIf="selectedProduct$ | async as selectedProduct"
   class="detail"
 >
+
 <!-- Use string interpolation to bind selectedProduct.title to the h3 element -->
-  <h3></h3>
+  <h3>{{ selectedProduct.title }}</h3>
   <div class="image-wrapper">
 <!-- bind selectedProduct.image to src and selectedProduct.title to alt -->>
     <img
+      [src]="selectedProduct.image"
+      [alt]="selectedProduct.title"
     />
     <div class="description">
       <!-- Use string interpolation to bind selectedProduct.description to the p element -->
-      <p></p>
+      <p>{{ selectedProduct.description }}</p>
       <!-- use ngFor to iterate over selectedProduct.tags and bind each tag to the span -->
       <h4>Tags:
         <span
+          *ngFor="let tag of selectedProduct.tags"
           class="tag"
-        ></span></h4>
+        >{{ tag }}</span></h4>
       <!-- Use string interpolation to bind selectedProduct.price to the span element -->
       <!-- Use the Angular currency pipe to format and add the currency unit to the price -->
-      <p class="price">Price: <span></span></p>
+      <p class="price">Price: <span>{{ selectedProduct.price | currency }}</span></p>
     </div>
   </div>
 </div>
