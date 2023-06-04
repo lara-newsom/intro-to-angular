@@ -1,1 +1,124 @@
-<p>contact works!</p>
+<section class="main-content">
+  <div class="contact-wrapper">
+    <div class="image-wrapper">
+      <img src="../../assets/images/contact.jpg" alt="couple of kids in animal costumes" />
+    </div>
+    <!-- we only want to render this element and it's children if the form has not been submitted -->
+    <!-- if the form has been submitted it should show the formSubmitted template -->
+    <div
+      class="form-wrapper"
+    >
+      <h3>We'd Love to Hear from You</h3>
+      <p>Please fill out the form below to let us know how we can help.</p>
+      <fieldset>
+        <!-- The form id is contactForm which is set equal to ngForm -->
+        <form #contactForm="ngForm">
+          <div class="form-group">
+            <!-- screen readers need a label to announce what the input is for -->
+            <label for="name">Full name</label>
+            <!-- This is an example of how we bind a model to the form template -->
+            <!-- [(two-way binding)] updates the model and the form as users input text -->
+            <!-- The id property needs to match the label for property -->
+            <!-- The name property is the property the form uses to store form values -->
+            <!-- The name property is prepended with # to connect it with the validation block -->
+            <!-- The required directive marks the inout as a required input -->
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="model.fullName"
+              name="full_name"
+              value=""
+              required
+              #full_name="ngModel"
+            />
+
+            <!-- This div should only render if the full_name has been touched and is also invalid -->
+            <div
+              class="alert alert-danger"
+            >Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <!-- following the example above connect the email control and make it required -->
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email_address"
+              [(ngModel)]="model.email"
+              value=""
+              required
+              #email_address="ngModel"
+            />
+            <!-- This div should only render if the email_address has been touched and is also invalid -->
+            <div
+              class="alert alert-danger"
+            >Email is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- following the example above connect the phone control it is not required -->
+            <label for="phone">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone_number"
+              [(ngModel)]="model.phone"
+              value=""
+            />
+          </div>
+
+          <div class="form-group">
+            <!-- following the example above connect the comment control and make it required -->
+            <label for="comment">Comment</label>
+            <textarea
+              id="comment"
+              name="text_comment"
+              [(ngModel)]="model.comment"
+              required
+              #text_comment="ngModel"
+            ></textarea>
+            <!-- This div should only render if the text_comment has been touched and is also invalid -->
+            <div
+              class="alert alert-danger"
+            >Comment is required
+            </div>
+          </div>
+
+          <!-- This button should be disabled if contactForm is invalid -->
+          <button
+            mat-raised-button
+            type="submit"
+            name="submit"
+            (click)="submitForm(model)"
+          >Submit
+          </button>
+        </form>
+      </fieldset>
+    </div>
+  </div>
+</section>
+
+<!-- This template should show when the form has been submitted -->
+<ng-template #formSubmitted>
+  <!-- we want this div and it's children to only render when the form is not loading -->
+  <!-- If the form is loading we want to render the submitting template instead -->
+  <div
+    class="form-wrapper"
+  >
+    <h3>Thank You for Your Message</h3>
+    <p>It may take up to 24 hours for someone to respond.</p>
+    <button mat-raised-button (click)="clearForm()">Send Another</button>
+  </div>
+</ng-template>
+
+<!-- This template should show when the form is submitting -->
+<ng-template #submitting>
+  <div
+  class="form-wrapper-spinner"
+>
+  <mat-spinner></mat-spinner>
+</div>
+</ng-template>
+
