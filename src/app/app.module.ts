@@ -14,11 +14,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ROUTE_TOKENS } from './models/route-tokens';
 import { HttpClientModule } from '@angular/common/http';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedUiModule } from './shared-ui/shared-ui.module';
 
 // Declare a ROUTES constant and create routes for 'home', '', and '**'
 const ROUTES: Route[] = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: '**',
+    component: HomeComponent
+  }
 ];
 
 @NgModule({
@@ -39,7 +51,7 @@ const ROUTES: Route[] = [
     MatSidenavModule,
     MatListModule,
     // Pass ROUTES into the forRoot method
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(ROUTES),
     SharedUiModule,
   ],
   providers: [],
