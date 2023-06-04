@@ -1,7 +1,5 @@
-<!-- We are using the RouterLink and QueryParams directives to change the browser URL from the template -->
+<!-- add a router link to product/{{category}}/product -->
 <button
-  [routerLink]="['/' + ROUTE_TOKENS.products, product.category, ROUTE_TOKENS.productDetail]"
-  [queryParams]="{ productId: product.id }"
   class="product"
 >
   <img [src]="product.image" [alt]="product.description" />
