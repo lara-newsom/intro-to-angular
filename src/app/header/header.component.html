@@ -35,6 +35,7 @@
               >Products <span>&#8964;</span></button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
                 <button
+                  [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
                   *ngFor="let link of LINKS"
                   mat-menu-item
                 >{{ link.description }}</button>
@@ -42,6 +43,7 @@
             </li>
             <li>
               <button
+                [routerLink]="[ '/' + ROUTE_TOKENS.contact]"
                 class="menu-item"
                 mat-button
               >Contact</button></li>
@@ -57,8 +59,13 @@
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
-      <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
       <button
+        mat-menu-item
+        [routerLink]="[ '/' + ROUTE_TOKENS.contact]"
+        (click)="sidenav.toggle()"
+      >Contact</button>
+      <button
+        [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
         *ngFor="let link of LINKS"
         mat-menu-item
       >{{ link.description }}</button>
