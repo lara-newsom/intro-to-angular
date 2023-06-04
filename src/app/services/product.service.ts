@@ -12,15 +12,18 @@ import { ProductApiService } from './product-api.service';
 export class ProductService {
   // create a private readonly property called selectedCategory that is a BehaviorSubject
   // set the initial value to Category.ALL
+  private readonly selectedCategory = new BehaviorSubject<Category>(Category.ALL);
 
   // create a private readonly property called selectedProduct that is a BehaviorSubject
   // set the initial value to undefined
+  private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
 
 
   private readonly products = new BehaviorSubject<Product[]>(PRODUCTS);
   readonly products$ = this.products.asObservable();
 
   // expose a public property called selectedCategory$ equal to the observable value of the selectedCategory subject
+  readonly selectedCategory$ = this.selectedCategory.asObservable();
 
   readonly homeProducts$ = this.products$.pipe(
     map((products) => {
@@ -47,8 +50,8 @@ export class ProductService {
   ) {
     this.productApiService.getProducts$
       .pipe(takeUntilDestroyed())
-      .subscribe((response) => {
-        this.products.next(response.products);
+      .subscribe((products) => {
+        this.products.next(products);
       });
   }
 
