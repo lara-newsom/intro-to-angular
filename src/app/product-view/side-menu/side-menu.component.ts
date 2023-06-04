@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent {
+  // declare a dependency on the ProductService
 
+  // create a property called products$ and set it equal to productService.filteredProducts$
+
+  // create a class method that sets the selected product on the product service
 }

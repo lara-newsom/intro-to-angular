@@ -1,1 +1,24 @@
-<p>detail-view works!</p>
+<!-- use the async pipe with ngIf to subscribe to selectedProduct$ and alias the value as selectedProduct-->
+<div
+  class="detail"
+>
+<!-- Use string interpolation to bind selectedProduct.title to the h3 element -->
+  <h3></h3>
+  <div class="image-wrapper">
+<!-- bind selectedProduct.image to src and selectedProduct.title to alt -->>
+    <img
+    />
+    <div class="description">
+      <!-- Use string interpolation to bind selectedProduct.description to the p element -->
+      <p></p>
+      <!-- use ngFor to iterate over selectedProduct.tags and bind each tag to the span -->
+      <h4>Tags:
+        <span
+          class="tag"
+        ></span></h4>
+      <!-- Use string interpolation to bind selectedProduct.price to the span element -->
+      <!-- Use the Angular currency pipe to format and add the currency unit to the price -->
+      <p class="price">Price: <span></span></p>
+    </div>
+  </div>
+</div>

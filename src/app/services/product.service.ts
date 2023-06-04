@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { BehaviorSubject, map, switchMap } from 'rxjs';
 import { Product } from '../models/product';
+import { Category } from '../models/category';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PRODUCTS } from '../models/product-data.mock';
 import { ProductApiService } from './product-api.service';
@@ -9,15 +10,18 @@ import { ProductApiService } from './product-api.service';
   providedIn: 'root'
 })
 export class ProductService {
-  // create a private readonly property called products that is a BehaviorSubject
-  // We will initialize the subject with the hardcoded PRODUCTS array
+  // create a private readonly property called selectedCategory that is a BehaviorSubject
+  // set the initial value to Category.ALL
+
+  // create a private readonly property called selectedProduct that is a BehaviorSubject
+  // set the initial value to undefined
+
+
   private readonly products = new BehaviorSubject<Product[]>(PRODUCTS);
+  readonly products$ = this.products.asObservable();
 
-  // expose a public property called products$ equal to the observable value of the products subject
-  readonly products$ = this.products.asObservable()
+  // expose a public property called selectedCategory$ equal to the observable value of the selectedCategory subject
 
-  // Let's change this property to return the first, middle, and last product
-  // We will use the products response from productApiService.getProducts$
   readonly homeProducts$ = this.products$.pipe(
     map((products) => {
       const middle = Math.floor(products.length / 2);
@@ -26,17 +30,31 @@ export class ProductService {
     })
   );
 
-  // add a dependency for productApiService in the constructor
-  // in the constructor method, subscribe to getProducts$
-  // using the tap operator, call next on the products subject
-  // use the takeUntilDestroyed operator to handle cleaning up the subscription
+  // create an observable property called filteredProducts$
+  // start the stream with the selectedCategory$ subject
+  // use switchMap to use the value from selectedCategory$ to filter products$
+  // if Category.ALL is selected all products$ should be returned
+
+
+  // create an observable property called selectedProduct$
+  // start the stream with the selectedProduct subject
+  // use switchMap to use the value from selectedProduct to filter products$
+  // if no product is found return undefined
+
+
   constructor(
     private readonly productApiService: ProductApiService
   ) {
-    this.productApiService.getProducts$.pipe(
-      tap((products) => this.products.next(products)),
-      takeUntilDestroyed()
-    ).subscribe();
+    this.productApiService.getProducts$
+      .pipe(takeUntilDestroyed())
+      .subscribe((response) => {
+        this.products.next(response.products);
+      });
   }
-}
 
+  // create a public class method called setSelectedProduct
+  // when invoked it calls next on the private selectedProduct subject
+
+  // create a public class method called setSelectedCategory
+  // when invoked it calls next on the private selectedCategory subject
+}
