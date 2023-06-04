@@ -29,3 +29,7 @@ section,
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-drawer-content {
+  background-color: rgba(232, 249, 253, 1);
+}
