@@ -43,12 +43,7 @@
             <label for="email">Email</label>
             <input
               type="email"
-              id="email"
-              name="email_address"
-              [(ngModel)]="model.email"
               value=""
-              required
-              #email_address="ngModel"
             />
             <!-- This div should only render if the email_address has been touched and is also invalid -->
             <div
@@ -62,9 +57,6 @@
             <label for="phone">Phone</label>
             <input
               type="tel"
-              id="phone"
-              name="phone_number"
-              [(ngModel)]="model.phone"
               value=""
             />
           </div>
@@ -73,11 +65,6 @@
             <!-- following the example above connect the comment control and make it required -->
             <label for="comment">Comment</label>
             <textarea
-              id="comment"
-              name="text_comment"
-              [(ngModel)]="model.comment"
-              required
-              #text_comment="ngModel"
             ></textarea>
             <!-- This div should only render if the text_comment has been touched and is also invalid -->
             <div
