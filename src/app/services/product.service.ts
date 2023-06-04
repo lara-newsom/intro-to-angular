@@ -10,51 +10,37 @@ import { ProductApiService } from './product-api.service';
   providedIn: 'root'
 })
 export class ProductService {
-  private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
-  private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
+  // create a private readonly property called selectedCategory that is a BehaviorSubject
+  // set the initial value to Category.ALL
 
-  // initialized with PRODUCTS mock data in case endpoint in not running
+  // create a private readonly property called selectedProduct that is a BehaviorSubject
+  // set the initial value to undefined
+
+
   private readonly products = new BehaviorSubject<Product[]>(PRODUCTS);
-
   readonly products$ = this.products.asObservable();
-  readonly selectedCategory$ = this.selectedCategory.asObservable();
 
-  // Products for the home view. We are grabbing three out of the array.
+  // expose a public property called selectedCategory$ equal to the observable value of the selectedCategory subject
+
   readonly homeProducts$ = this.products$.pipe(
     map((products) => {
-      if(products.length){
-        const middle = Math.floor(products.length / 2);
-        return [products[0], products[middle], products[products.length -1]];
-      }
-      return [];
+      const middle = Math.floor(products.length / 2);
+
+      return [products[0], products[middle], products[products.length - 1]];
     })
   );
 
-  // Filtered products default to ALL when no category is selected
-  readonly filteredProducts$ = this.selectedCategory.pipe(
-    switchMap((category) => this.products$.pipe(
-      map((products) => {
-        if(category === Category.ALL) {
-          return products;
-        }
+  // create an observable property called filteredProducts$
+  // start the stream with the selectedCategory$ subject
+  // use switchMap to use the value from selectedCategory$ to filter products$
+  // if Category.ALL is selected all products$ should be returned
 
-        return products.filter((product: Product) => product.category === category);
-      }),
-    ))
-  );
 
-  // Filters products by the selected product id
-  readonly selectedProduct$ = this.selectedProduct.pipe(
-    switchMap((id) =>
-      this.products$.pipe(
-        map((products) => {
-          if(id){
-            return products.find((product) => product.id === id);
-          }
+  // create an observable property called selectedProduct$
+  // start the stream with the selectedProduct subject
+  // use switchMap to use the value from selectedProduct to filter products$
+  // if no product is found return undefined
 
-          return undefined;
-        })
-      )));
 
   constructor(
     private readonly productApiService: ProductApiService
@@ -66,13 +52,9 @@ export class ProductService {
       });
   }
 
-  // public api that can set the selected product on the selectedProduct behavior subject
-  setSelectedProduct(id: string) {
-    this.selectedProduct.next(id);
-  }
+  // create a public class method called setSelectedProduct
+  // when invoked it calls next on the private selectedProduct subject
 
-  // public api that can set the selected category on the selectedCategory behavior subject
-  setSelectedCategory(category: string) {
-    this.selectedCategory.next(category);
-  }
+  // create a public class method called setSelectedCategory
+  // when invoked it calls next on the private selectedCategory subject
 }
