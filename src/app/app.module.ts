@@ -14,29 +14,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { ROUTE_TOKENS } from './models/route-tokens';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedUiModule } from './shared-ui/shared-ui.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedUiModule } from './shared-ui/shared-ui.module';
 
-// Declare a ROUTES constant and create routes for 'home', '', and '**'
 const ROUTES: Route[] = [
   {
+    path: ROUTE_TOKENS.products,
+    loadChildren: () => import('./product-view/product-view.module').then(m => m.ProductViewModule),
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: ROUTE_TOKENS.home,
     pathMatch: 'full',
   },
   {
-    path: 'home',
+    path: ROUTE_TOKENS.home,
     component: HomeComponent,
   },
-  {
-    path: ROUTE_TOKENS.products,
-    loadChildren: () =>import('./product-view/product-view.module')
-      .then(m => m.ProductViewModule),
-  },
+  // we need to add a route to lazy load the contact routes
+  // we are actually just appending the routes to this route array declaration at this index
   {
     path: '**',
-    component: NotFoundComponent
-  }
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
@@ -56,9 +56,9 @@ const ROUTES: Route[] = [
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    // Pass ROUTES into the forRoot method
     RouterModule.forRoot(ROUTES, {
-      bindToComponentInputs: true
+      enableTracing: false,
+      bindToComponentInputs: true,
     }),
     SharedUiModule,
   ],
