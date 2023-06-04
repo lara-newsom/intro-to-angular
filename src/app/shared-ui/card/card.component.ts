@@ -1,11 +1,13 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Product } from 'src/app/models/product';
 
 @Component({
   standalone: true,
   imports: [
-    CurrencyPipe
+    CurrencyPipe,
+    RouterLink,
   ],
   selector: 'app-card',
   templateUrl: './card.component.html',
