@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { ROUTE_TOKENS } from './models/route-tokens';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedUiModule } from './shared-ui/shared-ui.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 // Declare a ROUTES constant and create routes for 'home', '', and '**'
 const ROUTES: Route[] = [
@@ -38,6 +39,7 @@ const ROUTES: Route[] = [
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    NotFoundComponent,
   ],
   imports: [
     HttpClientModule,
