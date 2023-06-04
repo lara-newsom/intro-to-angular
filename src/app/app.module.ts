@@ -17,11 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SharedUiModule } from './shared-ui/shared-ui.module';
 
+// declare a lazy loaded route for the product view
 const ROUTES: Route[] = [
-  {
-    path: ROUTE_TOKENS.products,
-    loadChildren: () => import('./product-view/product-view.module').then(m => m.ProductViewModule),
-  },
   {
     path: '',
     redirectTo: ROUTE_TOKENS.home,
@@ -32,8 +29,9 @@ const ROUTES: Route[] = [
     component: HomeComponent,
   },
   {
-    path: ROUTE_TOKENS.contact,
-    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
+    path: ROUTE_TOKENS.products,
+    loadChildren: () =>import('./product-view/product-view.module')
+      .then(m => m.ProductViewModule),
   },
   {
     path: '**',
