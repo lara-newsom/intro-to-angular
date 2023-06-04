@@ -47,8 +47,8 @@ export class ProductService {
   ) {
     this.productApiService.getProducts$
       .pipe(takeUntilDestroyed())
-      .subscribe((response) => {
-        this.products.next(response.products);
+      .subscribe((products) => {
+        this.products.next(products);
       });
   }
 
