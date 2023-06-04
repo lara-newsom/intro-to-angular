@@ -33,6 +33,7 @@
                 [matMenuTriggerFor]="menu"
               >Products <span>&#8964;</span></button>
               <mat-menu class="menu-dropdown" #menu="matMenu">
+                <!-- add a routerLink to the products route and the link category -->
                 <button
                   *ngFor="let link of LINKS"
                   mat-menu-item
@@ -40,6 +41,7 @@
               </mat-menu>
             </li>
             <li>
+              <!-- Add a routerLink to the contact route -->
               <button
                 class="menu-item"
                 mat-button
@@ -56,7 +58,9 @@
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <button (click)="sidenav.toggle()" mat-menu-item>Close</button>
+      <!-- add a router link to the contact route -->
       <button mat-menu-item (click)="sidenav.toggle()">Contact</button>
+      <!-- add a router link to the products route and then the link category route-->
       <button
         *ngFor="let link of LINKS"
         mat-menu-item
