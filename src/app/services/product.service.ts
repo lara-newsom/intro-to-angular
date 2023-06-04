@@ -37,12 +37,36 @@ export class ProductService {
   // start the stream with the selectedCategory$ subject
   // use switchMap to use the value from selectedCategory$ to filter products$
   // if Category.ALL is selected all products$ should be returned
+  readonly filteredProducts$ = this.selectedCategory.pipe(
+    switchMap((category) => {
+      return this.products$.pipe(
+        map((products) => {
+          if(category === Category.ALL){
+            return products;
+          }
+
+          return products.filter(
+            (product) => product.category.toLowerCase() === category.toLowerCase()
+          )
+        })
+      )
+    })
+  )
 
 
   // create an observable property called selectedProduct$
   // start the stream with the selectedProduct subject
   // use switchMap to use the value from selectedProduct to filter products$
   // if no product is found return undefined
+  readonly selectedProduct$ = this.selectedProduct.pipe(
+    switchMap((productId) => {
+      return this.products$.pipe(
+        map((products) => {
+          return products.find((product) => product.id === productId);
+        })
+      )
+    })
+  )
 
 
   constructor(
@@ -57,7 +81,13 @@ export class ProductService {
 
   // create a public class method called setSelectedProduct
   // when invoked it calls next on the private selectedProduct subject
+  setSelectedProduct(productId?: string) {
+    this.selectedProduct.next(productId);
+  }
 
   // create a public class method called setSelectedCategory
   // when invoked it calls next on the private selectedCategory subject
+  setSelectedCategory(category: Category) {
+    this.selectedCategory.next(category);
+  }
 }
