@@ -6,6 +6,7 @@
     <!-- we only want to render this element and it's children if the form has not been submitted -->
     <!-- if the form has been submitted it should show the formSubmitted template -->
     <div
+      *ngIf="!submitted; else formSubmitted"
       class="form-wrapper"
     >
       <h3>We'd Love to Hear from You</h3>
@@ -34,6 +35,7 @@
 
             <!-- This div should only render if the full_name has been touched and is also invalid -->
             <div
+              *ngIf="full_name.touched && full_name.invalid"
               class="alert alert-danger"
             >Name is required
             </div>
@@ -105,6 +107,7 @@
   <!-- we want this div and it's children to only render when the form is not loading -->
   <!-- If the form is loading we want to render the submitting template instead -->
   <div
+    *ngIf="!loading; else submitting"
     class="form-wrapper"
   >
     <h3>Thank You for Your Message</h3>

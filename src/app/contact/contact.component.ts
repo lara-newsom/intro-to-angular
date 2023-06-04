@@ -1,7 +1,7 @@
 import { Component, OnDestroy, inject } from '@angular/core';
 import { ContactForm } from '../models/contact-form';
 import { ContactService } from '../services/contact.service';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class ContactComponent{
   // inject the contactService
+  private readonly contactService = inject(ContactService);
 
   // This declares an empty contact form model
   model: ContactForm = {
@@ -37,16 +38,28 @@ export class ContactComponent{
 
   submitForm(model: ContactForm) {
     // at this point submitted should be true and loading should be true
+    this.submitted = true;
+    this.loading = true;
 
     // our contact service has a method to submit our form called submitContactForm
     // it returns an observable so we will need to subscribe
     // once our form has been submitted we need to toggle loading to false
-
+    this.contactService.submitContactForm(model).pipe(
+      tap(() => {
+        this.loading = false
+      }),
+    ).subscribe();
   }
 
   // declare a method called clearForm that sets submitted to false and clears the values in this.model
   clearForm() {
-
+    this.model = {
+      fullName: '',
+      email: '',
+      phone: '',
+      comment: '',
+    };
+    this.submitted = false;
   }
 
   // before we are done we have to manage the subscription we are instantiating when we submit our form
