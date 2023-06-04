@@ -33,7 +33,7 @@ const ROUTES: Route[] = [
   },
   {
     path: ROUTE_TOKENS.contact,
-    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
+    loadChildren: () => import('./contact/contact-routes').then(m => m.CONTACT_ROUTES),
   },
   {
     path: '**',
