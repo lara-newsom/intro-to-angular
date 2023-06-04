@@ -7,20 +7,11 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { Route, RouterModule } from '@angular/router';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ROUTE_TOKENS } from '../models/route-tokens';
-import { BreadcrumbsComponent } from '../shared-ui/breadcrumbs/breadcrumbs.component';
 
 const ROUTES: Route[] = [
-  {
-    path: ':categoryId',
-    component: ProductViewComponent,
-    // we are rendering the child routes in a nested router outlet
-    children: [
-      {
-        path: ROUTE_TOKENS.productDetail,
-        component: DetailViewComponent,
-      }
-    ]
-  }
+  // declare a route that matches the categoryId url param that routes to the ProductViewComponent
+  // To route content into the nested router outlet, create a children array
+  // declare a route in the children array that matches ROUTE_TOKENS.productDetail and routes to DetailViewComponent
 ]
 
 @NgModule({
@@ -35,7 +26,6 @@ const ROUTES: Route[] = [
     NgFor,
     MatButtonModule,
     MatIconModule,
-    BreadcrumbsComponent,
     RouterModule.forChild(ROUTES),
   ],
 })

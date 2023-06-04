@@ -7,15 +7,10 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./detail-view.component.css']
 })
 export class DetailViewComponent {
-  // We are using a setter on the input which is bound to the router query params
-  // This allows us to set the selected product in our shared service
-  @Input() set productId(val: string) {
-      this.productService.setSelectedProduct(val);
-    }
+  // create an input property called productId
+  // use a setter to invoke the setSelectedProduct method on the productService
 
-  // The inject function is the same as declaring the service inside the constructor
-  private readonly productService = inject(ProductService);
+  // Inject the productService into the class
 
-  // We are using declarative style programming to set this property equal to the selectedProduct observable
-  readonly selectedProduct$ = this.productService.selectedProduct$;
+  // create a class property called selectedProduct$ and set it equal to productService.selectedProduct$
 }

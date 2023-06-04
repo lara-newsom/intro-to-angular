@@ -1,16 +1,24 @@
-<!-- We are using the async pipe to handle subscribing and unsubscribing from observables -->
-<!-- We have aliased the return value using the 'as' syntax -->
-<!-- Everything inside the div is in-scope of the selectedProduct variable -->
-<div class="detail" *ngIf="selectedProduct$ | async as selectedProduct">
-<!-- We are using the {{ string interpolation }} syntax to render the product title in the h3 element -->
-  <h3>{{ selectedProduct.title }}</h3>
+<!-- use the async pipe with ngIf to subscribe to selectedProduct$ and alias the value as selectedProduct-->
+<div
+  class="detail"
+>
+<!-- Use string interpolation to bind selectedProduct.title to the h3 element -->
+  <h3></h3>
   <div class="image-wrapper">
-<!-- We are using the [ attribute binding ] syntax to let the template know that we are passing a dynamic value -->
-    <img [src]="selectedProduct.image" [alt]="selectedProduct.title" />
+<!-- bind selectedProduct.image to src and selectedProduct.title to alt -->>
+    <img
+    />
     <div class="description">
-      <p>{{ selectedProduct.description }}</p>
-      <h4>Tags: <span class="tag" *ngFor="let tag of selectedProduct.tags">{{ tag }}</span></h4>
-      <p class="price">Price: <span>{{ selectedProduct.price }}</span></p>
+      <!-- Use string interpolation to bind selectedProduct.description to the p element -->
+      <p></p>
+      <!-- use ngFor to iterate over selectedProduct.tags and bind each tag to the span -->
+      <h4>Tags:
+        <span
+          class="tag"
+        ></span></h4>
+      <!-- Use string interpolation to bind selectedProduct.price to the span element -->
+      <!-- Use the Angular currency pipe to format and add the currency unit to the price -->
+      <p class="price">Price: <span></span></p>
     </div>
   </div>
 </div>

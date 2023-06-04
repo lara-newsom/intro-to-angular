@@ -7,11 +7,9 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent {
-  private readonly productService = inject(ProductService);
+  // declare a dependency on the ProductService
 
-  products$ = this.productService.filteredProducts$;
+  // create a property called products$ and set it equal to productService.filteredProducts$
 
-  selectProduct(id: string){
-    this.productService.setSelectedProduct(id);
-  }
+  // create a class method that sets the selected product on the product service
 }
