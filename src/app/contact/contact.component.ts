@@ -20,7 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent{
+export class ContactComponent implements OnDestroy{
   // inject the contactService
   private readonly contactService = inject(ContactService);
 
@@ -36,6 +36,8 @@ export class ContactComponent{
   submitted = false;
   loading = false;
 
+  private readonly destroyed$ = new ReplaySubject<void>(1);
+
   submitForm(model: ContactForm) {
     // at this point submitted should be true and loading should be true
     this.submitted = true;
@@ -48,6 +50,7 @@ export class ContactComponent{
       tap(() => {
         this.loading = false
       }),
+      takeUntil(this.destroyed$)
     ).subscribe();
   }
 
@@ -64,4 +67,8 @@ export class ContactComponent{
 
   // before we are done we have to manage the subscription we are instantiating when we submit our form
   // Failure to unsubscribe can lead to memory leaks
+  ngOnDestroy(): void {
+      this.destroyed$.next();
+      this.destroyed$.complete();
+  }
 }

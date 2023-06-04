@@ -54,6 +54,7 @@
             />
             <!-- This div should only render if the email_address has been touched and is also invalid -->
             <div
+              *ngIf="email_address.touched && email_address.invalid"
               class="alert alert-danger"
             >Email is required
             </div>
@@ -83,6 +84,7 @@
             ></textarea>
             <!-- This div should only render if the text_comment has been touched and is also invalid -->
             <div
+              *ngIf="text_comment.touched && text_comment.invalid"
               class="alert alert-danger"
             >Comment is required
             </div>
@@ -90,6 +92,7 @@
 
           <!-- This button should be disabled if contactForm is invalid -->
           <button
+            [disabled]="contactForm.invalid"
             mat-raised-button
             type="submit"
             name="submit"
