@@ -31,6 +31,8 @@ const ROUTES: Route[] = [
     path: ROUTE_TOKENS.home,
     component: HomeComponent,
   },
+  // we need to add a route to lazy load the contact routes
+  // we are actually just appending the routes to this route array declaration at this index
   {
     path: ROUTE_TOKENS.contact,
     loadChildren: () => import('./contact/contact-routes').then(m => m.CONTACT_ROUTES),

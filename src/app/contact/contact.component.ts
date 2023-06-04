@@ -8,14 +8,12 @@ import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BreadcrumbsComponent } from '../shared-ui/breadcrumbs/breadcrumbs.component';
 
 @Component({
   standalone: true,
   imports: [
     MatProgressSpinnerModule,
     MatButtonModule,
-    BreadcrumbsComponent,
     NgIf,
     FormsModule,
   ],
@@ -23,53 +21,35 @@ import { BreadcrumbsComponent } from '../shared-ui/breadcrumbs/breadcrumbs.compo
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnDestroy{
-  readonly contactService = inject(ContactService);
-  destroyed$ = new ReplaySubject<void>(1);
+export class ContactComponent{
+  // inject the contactService
 
+  // This declares an empty contact form model
   model: ContactForm = {
     fullName: '',
     email: '',
     phone: '',
     comment: '',
   };
+
+  // We will use these properties to check what state our form is in
   submitted = false;
   loading = false;
 
-  breadcrumbs: Breadcrumb[] = [
-    {
-      display: 'Contact',
-      routerLink: ''
-    },
-  ];
-
   submitForm(model: ContactForm) {
-    this.submitted = true;
-    this.loading = true;
+    // at this point submitted should be true and loading should be true
 
-    this.contactService.submitContactForm(model).pipe(
-      // Since we are directly subscribing to the observable we have to unsubscribe when the component destroys
-      // This is to avoid memory leaks
-      takeUntil(this.destroyed$)
-    ).subscribe(() => {
-      this.loading = false;
-    })
+    // our contact service has a method to submit our form called submitContactForm
+    // it returns an observable so we will need to subscribe
+    // once our form has been submitted we need to toggle loading to false
+
   }
 
+  // declare a method called clearForm that sets submitted to false and clears the values in this.model
   clearForm() {
-    this.submitted = false;
-    this.model = {
-      fullName: '',
-      email: '',
-      phone: '',
-      comment: '',
-    }
+    
   }
 
-  // This sends a value through the ReplaySubject which causes the takeUntil operator
-  // to complete the observable which destroys the subscription
-  ngOnDestroy(): void {
-    this.destroyed$.next();
-    this.destroyed$.complete();
-  }
+  // before we are done we have to manage the subscription we are instantiating when we submit our form
+  // Failure to unsubscribe can lead to memory leaks
 }
