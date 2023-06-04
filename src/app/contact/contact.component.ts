@@ -1,5 +1,4 @@
 import { Component, OnDestroy, inject } from '@angular/core';
-import { Breadcrumb } from '../models/breadcrumb';
 import { ContactForm } from '../models/contact-form';
 import { ContactService } from '../services/contact.service';
 import { takeUntil } from 'rxjs/operators';
@@ -47,7 +46,7 @@ export class ContactComponent{
 
   // declare a method called clearForm that sets submitted to false and clears the values in this.model
   clearForm() {
-    
+
   }
 
   // before we are done we have to manage the subscription we are instantiating when we submit our form
