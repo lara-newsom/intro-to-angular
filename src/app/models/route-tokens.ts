@@ -6,3 +6,5 @@ export const ROUTE_TOKENS = {
   products: 'products',
   productDetail: 'detail',
 };
+
+

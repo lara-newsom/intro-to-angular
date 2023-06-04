@@ -30,7 +30,7 @@ const ROUTES: Route[] = [
   },
   {
     path: '**',
-    component: HomeComponent
+    component: NotFoundComponent
   }
 ];
 
@@ -39,7 +39,6 @@ const ROUTES: Route[] = [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    NotFoundComponent,
   ],
   imports: [
     HttpClientModule,
