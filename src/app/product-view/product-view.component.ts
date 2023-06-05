@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Breadcrumb } from '../models/breadcrumb';
 import { ROUTE_TOKENS } from '../models/route-tokens';
 import { Category } from '../models/category';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-product-view',
@@ -45,5 +46,7 @@ export class ProductViewComponent implements OnInit{
             routerLink: ``,
           }
         )
-      }})}
+      }})
+      this.activatedRoute.url.pipe(tap((s) => console.log('in component', s))).subscribe()
+  }
 }

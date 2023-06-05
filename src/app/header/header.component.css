@@ -9,6 +9,22 @@
   align-items: center;
 }
 
+.sale-banner {
+  padding: 10px 5px;
+  background-color: rgb(5, 37, 125);
+  padding-left: 50px;
+  text-align: center;
+  color: yellow;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.sale-banner span:last-of-type {
+  padding-left: 20px;
+  color: white;
+}
+
 mat-toolbar mat-toolbar-row {
   display: flex;
   justify-content: flex-end;

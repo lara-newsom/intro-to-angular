@@ -9,4 +9,5 @@ export interface Product {
   tags: string[];
   category: Category;
   id: string;
+  onSale?: boolean;
 }

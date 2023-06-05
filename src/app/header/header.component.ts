@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LINKS, CategoryLink, Category } from '../models/category';
 import { ROUTE_TOKENS } from '../models/route-tokens';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -12,4 +13,7 @@ export class HeaderComponent {
   readonly LINKS: CategoryLink[] = LINKS;
   readonly ROUTE_TOKENS = ROUTE_TOKENS;
   readonly Category = Category;
+  private readonly productService = inject(ProductService);
+
+  selectedProduct$ = this.productService.selectedProduct$
 }

@@ -252,6 +252,7 @@ export const PRODUCTS: Product[] = [
     tags: ['royalty', 'cat', 'paper', 'hat', 'crown'],
     category: Category.HATS,
     id: 'paper-crown-cat',
+    onSale: true,
   },
   {
     image: '../../assets/images/cropped/parrot-suit.jpg',

@@ -7,6 +7,7 @@
     ><img src="../../assets/images/justlikepeople.png" alt="Just Like People Logo" /></button>
   </h1>
 
+
 <!-- Elements prefixed with 'mat' are Angular Material Elements -->
   <mat-toolbar>
     <mat-toolbar-row>
@@ -54,6 +55,17 @@
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
+<ng-container
+*ngIf="selectedProduct$ | async as selectedProduct"
+>
+  <div
+  *ngIf="selectedProduct.onSale"
+    class="sale-banner"
+  >
+    <span>{{ selectedProduct.title }}</span>
+    <span>{{ '  On Sale Now!!!' | uppercase }}</span>
+  </div>
+</ng-container>
 
 <mat-sidenav-container>
 <!-- responsive side menu that is only displayed on screens 695px wide and smaller -->

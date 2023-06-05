@@ -3,6 +3,12 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+.sale{
+  color: red;
+  font-style: italic;
+  font-size: 1.4rem;
+  padding-left: 20px;
+}
 
 .detail h3 {
   text-align: left;

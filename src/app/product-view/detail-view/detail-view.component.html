@@ -10,7 +10,7 @@
     <div class="description">
       <p>{{ selectedProduct.description }}</p>
       <h4>Tags: <span class="tag" *ngFor="let tag of selectedProduct.tags">{{ tag }}</span></h4>
-      <p class="price">Price: <span>{{ selectedProduct.price }}</span></p>
+      <p class="price">Price: <span>{{ selectedProduct.price }}</span> <span *ngIf="selectedProduct.onSale" class="sale">ON SALE!!</span></p>
     </div>
   </div>
 </div>

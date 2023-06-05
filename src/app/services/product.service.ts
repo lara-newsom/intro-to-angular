@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, switchMap } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject, map, switchMap, tap } from 'rxjs';
 import { Product } from '../models/product';
 import { Category } from '../models/category';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PRODUCTS } from '../models/product-data.mock';
 import { ProductApiService } from './product-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class ProductService {
   );
 
   // Filters products by the selected product id
-  readonly selectedProduct$ = this.selectedProduct.pipe(
+  readonly selectedProduct2$ = this.selectedProduct.pipe(
     switchMap((id) =>
       this.products$.pipe(
         map((products) => {
@@ -75,4 +76,19 @@ export class ProductService {
   setSelectedCategory(category: string) {
     this.selectedCategory.next(category);
   }
+
+  private readonly activatedRoute = inject(ActivatedRoute);
+
+  readonly selectedProduct$ = this.activatedRoute.queryParams.pipe(
+    map((queryParams) => queryParams['productId']),
+    switchMap((id) =>
+      this.products$.pipe(
+        map((products) => {
+          if(id){
+            return products.find((product) => product.id.toLowerCase() === id.toLowerCase());
+          }
+
+          return undefined;
+        })
+      )));
 }
