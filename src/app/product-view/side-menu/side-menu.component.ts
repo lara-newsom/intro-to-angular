@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { ProductSignalsService } from 'src/app/services/product-signals.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -8,10 +9,10 @@ import { ProductService } from '../../services/product.service';
 })
 export class SideMenuComponent {
   private readonly productService = inject(ProductService);
+  // TODO: signals service comment out productService and uncomment the next line
+  // private readonly productsSignals = inject(ProductSignalsService)
 
   products$ = this.productService.filteredProducts$;
-
-  selectProduct(id: string){
-    this.productService.setSelectedProduct(id);
-  }
+  // TODO: signals service comment out productService and uncomment the next line
+  // products = this.productsSignals.products
 }

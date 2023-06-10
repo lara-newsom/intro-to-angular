@@ -1,7 +1,8 @@
-<!-- We are using the async pipe to handle subscribing and unsubscribing from observables -->
-<!-- We have aliased the return value using the 'as' syntax -->
-<!-- Everything inside the div is in-scope of the selectedProduct variable -->
 <div class="detail" *ngIf="selectedProduct$ | async as selectedProduct">
+<!-- TODO: Signals Template -->
+<!--<div class="detail" *ngIf="selectedProduct() as selectedProduct">-->
+
+
 <!-- We are using the {{ string interpolation }} syntax to render the product title in the h3 element -->
   <h3>{{ selectedProduct.title }}</h3>
   <div class="image-wrapper">

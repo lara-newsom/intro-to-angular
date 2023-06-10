@@ -11,13 +11,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ProductService {
-  private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
-  private readonly selectedProduct = new BehaviorSubject<string | undefined>(undefined);
+  private readonly activatedRoute = inject(ActivatedRoute);
 
   // initialized with PRODUCTS mock data in case endpoint in not running
   private readonly products = new BehaviorSubject<Product[]>(PRODUCTS);
-
   readonly products$ = this.products.asObservable();
+
+  private readonly selectedCategory = new BehaviorSubject<string>(Category.ALL);
   readonly selectedCategory$ = this.selectedCategory.asObservable();
 
   // Products for the home view. We are grabbing three out of the array.
@@ -44,8 +44,8 @@ export class ProductService {
     ))
   );
 
-  // Filters products by the selected product id
-  readonly selectedProduct2$ = this.selectedProduct.pipe(
+  readonly selectedProduct$ = this.activatedRoute.queryParams.pipe(
+    map((queryParams) => queryParams['productId']),
     switchMap((id) =>
       this.products$.pipe(
         map((products) => {
@@ -67,28 +67,8 @@ export class ProductService {
       });
   }
 
-  // public api that can set the selected product on the selectedProduct behavior subject
-  setSelectedProduct(id: string) {
-    this.selectedProduct.next(id);
-  }
-
   // public api that can set the selected category on the selectedCategory behavior subject
   setSelectedCategory(category: string) {
     this.selectedCategory.next(category);
   }
-
-  private readonly activatedRoute = inject(ActivatedRoute);
-
-  readonly selectedProduct$ = this.activatedRoute.queryParams.pipe(
-    map((queryParams) => queryParams['productId']),
-    switchMap((id) =>
-      this.products$.pipe(
-        map((products) => {
-          if(id){
-            return products.find((product) => product.id.toLowerCase() === id.toLowerCase());
-          }
-
-          return undefined;
-        })
-      )));
 }
